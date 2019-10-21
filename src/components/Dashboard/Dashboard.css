@@ -4,11 +4,13 @@
   padding: 25px 0;
   background-color: #fff;
 }
+
 @media screen and (max-width: 1120px) {
   .staff-members-page__dashboard {
     padding: 25px 35px 0;
   }
 }
+
 @media screen and (max-width: 1280px) {
   .staff-members-page__dashboard {
     padding: 25px 40px 0;
@@ -132,4 +134,9 @@
   -ms-flex-pack: start;
   justify-content: flex-start;
   margin-bottom: 25px;
+}
+
+.boss-button__add {
+  margin-top: 2px;
+  margin-right: 7px;
 }

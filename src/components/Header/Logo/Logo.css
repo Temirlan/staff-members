@@ -7,8 +7,38 @@
   display: block;
 }
 
-.boss-page-header__action_role_profile:before {
+/* .boss-page-header__action_role_profile:before {
   content: "\E904";
   font-size: 16px;
   line-height: 38px;
+} */
+
+.boss-page-header__logo {
+  margin: 0;
+  padding: 0;
+  color: #4c4c4c;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-feature-settings: normal;
+  font-variant: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.5;
+  text-align: left;
+  text-indent: 0;
+  text-transform: none;
+  white-space: normal;
+  word-spacing: normal;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 1;
+  transition: all 0.5s;
+  border: none;
+  outline: none;
 }

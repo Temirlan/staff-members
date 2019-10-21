@@ -22,3 +22,12 @@
   margin: 0 auto;
   padding: 10px 0;
 }
+
+.boss-page-header__search-icon {
+  font-size: 25px;
+}
+
+.boss-page-header__profile-icon {
+  font-size: 16px;
+  line-height: 38px;
+}

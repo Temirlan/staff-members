@@ -1,5 +1,8 @@
 import React from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 import "./Dashboard.css";
 import Button from "../Button/Button";
 
@@ -18,7 +21,8 @@ const Dashboard = props => {
               </span>
             </h1>
             <div className="staff-members-page-dashboard__buttons-group">
-              <Button className="boss-button boss-button_role_add boss-page-dashboard__button">
+              <Button className="boss-button">
+                <FontAwesomeIcon className="boss-button__add" icon={faPlus} />
                 Add Staff Members
               </Button>
             </div>
