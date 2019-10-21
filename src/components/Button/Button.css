@@ -1,0 +1,161 @@
+.boss-page-header__logo {
+  margin: 0;
+  padding: 0;
+  color: #4c4c4c;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-feature-settings: normal;
+  font-variant: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.5;
+  text-align: left;
+  text-indent: 0;
+  text-transform: none;
+  white-space: normal;
+  word-spacing: normal;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 1;
+  transition: all 0.5s;
+  border: none;
+  outline: none;
+}
+
+.boss-page-header__logo:hover {
+  cursor: pointer;
+}
+
+/**/
+.boss-page-header__action_role_search {
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  border-color: transparent;
+}
+
+.boss-page-header__action {
+  margin: 0;
+  padding: 0;
+  color: #4c4c4c;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-feature-settings: normal;
+  font-variant: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.5;
+  text-align: left;
+  text-indent: 0;
+  text-transform: none;
+  white-space: normal;
+  word-spacing: normal;
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  outline: none;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 1px solid #4c4c4c;
+  border-radius: 50%;
+  transition: background-color 0.4s;
+}
+
+.boss-page-header__action_role_search:before {
+  content: "\E908";
+  font-size: 25px;
+}
+
+.boss-page-header__action:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-family: icons;
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: 400;
+  color: #4c4c4c;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.boss-page-header__action_role_profile {
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: 30px;
+}
+
+.boss-button_role_add {
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.boss-button {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  outline: 0;
+  color: #4c4c4c;
+  text-decoration: none;
+  cursor: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  empty-cells: show;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-feature-settings: normal;
+  font-variant: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.5;
+  text-align: left;
+  text-indent: 0;
+  text-transform: none;
+  white-space: normal;
+  word-spacing: normal;
+  box-sizing: border-box;
+  background-color: #84bef0;
+  color: #fff;
+  display: inline-block;
+  padding: 15px 20px;
+  border-radius: 5px;
+  line-height: 1;
+  color: #fff;
+  font-weight: 300;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.boss-button_role_add:before {
+  content: "\E97D";
+  display: inline-block;
+  margin-right: 10px;
+  font-family: icons;
+  font-size: 12px;
+  line-height: 14px;
+  color: inherit;
+  font-weight: normal;
+  vertical-align: baseline;
+}

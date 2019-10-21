@@ -1,0 +1,14 @@
+.boss-page-header__group_role_logo {
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.boss-page-header__group {
+  display: block;
+}
+
+.boss-page-header__action_role_profile:before {
+  content: "\E904";
+  font-size: 16px;
+  line-height: 38px;
+}
