@@ -1,11 +1,11 @@
 import React from "react";
 
-const Dashboard = props => {
+const Content = props => {
   return (
-    <div className="boss-page-main__dashboard">
+    <div className="boss-page-main__content">
       <div className="boss-page-main__inner">{props.children}</div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Content;
