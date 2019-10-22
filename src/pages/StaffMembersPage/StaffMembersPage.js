@@ -1,18 +1,18 @@
 import React from "react";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import Content from "../../components/Content/Content";
-import DashboardTitle from "./components/DashboardTitle/DashboardTitle";
-import StaffMembersTable from "./components/StaffMembersTable/StaffMembersTable";
 import StaffMembersCount from "./components/StaffMembersCount/StaffMembersCount";
+import DashboardTitleContainer from "./containers/DashboardTitleContainer";
+import StaffMembersTableContainer from "./containers/StaffMembersTableContainer";
 
 const StaffMembersPage = props => {
   return (
     <div className="boss-page-main">
       <Dashboard>
-        <DashboardTitle />
+        <DashboardTitleContainer />
       </Dashboard>
       <Content>
-        <StaffMembersTable />
+        <StaffMembersTableContainer />
         <StaffMembersCount />
       </Content>
     </div>

@@ -6,7 +6,7 @@ const DashboardTitle = props => {
       <div className="boss-page-dashboard__group">
         <h1 className="boss-page-dashboard__title">
           <span className="boss-page-dashboard__title-text">Staff Members</span>
-          <span className="boss-page-dashboard__title-info">+695</span>
+          <span className="boss-page-dashboard__title-info">+{props.info}</span>
         </h1>
       </div>
     </div>
