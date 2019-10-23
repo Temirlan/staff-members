@@ -7,7 +7,8 @@ const inititalState = [];
 export default handleActions(
   {
     [types.INITIAL_LOAD]: (state, action) => {
-      return [...action.payload.staffTypes];
+      const payRates = action.payload.payRates || inititalState;
+      return [...payRates];
     }
   },
   inititalState

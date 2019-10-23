@@ -18,3 +18,17 @@ export const fetchData = () => {
       });
   };
 };
+
+export const fetchProfileById = idStaffMember => {
+  return dispatch => {
+    return axios
+      .get(`${URL_API}/${idStaffMember}`, {
+        headers: {
+          Authorization: `Token token=${AUTN_TOKEN}`
+        }
+      })
+      .then(response => {
+        dispatch(initialLoad(response.data));
+      });
+  };
+};

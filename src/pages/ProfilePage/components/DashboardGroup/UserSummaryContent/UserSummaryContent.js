@@ -1,16 +1,15 @@
 import React from "react";
-import UserSummaryHeader from "../UserSummaryHeader/UserSummaryHeader";
-import UserSummaryReviewList from "../UserSummaryReviewList/UserSummaryReviewList";
-import UserSummaryContacts from "../UserSummaryContacts/UserSummaryContacts";
 
 const UserSummaryContent = props => {
+  const renderUserSummary = render => {
+    return React.cloneElement(render());
+  };
+
   return (
     <div class="boss-user-summary__content">
-      <UserSummaryHeader />
-
-      <UserSummaryReviewList />
-
-      <UserSummaryContacts />
+      {renderUserSummary(props.renderUserSummaryHeader)}
+      {renderUserSummary(props.renderUserSummaryReviewList)}
+      {renderUserSummary(props.renderUserSummaryContacts)}
     </div>
   );
 };

@@ -1,18 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import StaffMembersPage from "./pages/StaffMembersPage/StaffMembersPage";
 import Header from "./components/Header/Header";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
-import { fetchData } from "./redux/actions";
+import StaffMembersPageContainer from "./containers/StaffMembersPageContainer";
+import ProfilePageContainer from "./containers/ProfilePageContainer";
 
 class App extends React.Component {
-  componentDidMount = () => {
-    this.props.onFetchData();
-  };
-
   render = () => {
     return (
       <div className="App">
@@ -21,10 +15,10 @@ class App extends React.Component {
             <Header />
             <Switch>
               <Route exact path="/staff_members">
-                <StaffMembersPage />
+                <StaffMembersPageContainer />
               </Route>
               <Route path="/staff_members/:idUser/profile">
-                <ProfilePage />
+                <ProfilePageContainer />
               </Route>
             </Switch>
           </>
@@ -34,17 +28,4 @@ class App extends React.Component {
   };
 }
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onFetchData: () => {
-      dispatch(fetchData());
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;

@@ -2,12 +2,15 @@ import { handleActions } from "redux-actions";
 
 import * as types from "../types";
 
-const inititalState = [];
+const inititalState = {};
 
 export default handleActions(
   {
     [types.INITIAL_LOAD]: (state, action) => {
-      return [...action.payload.staffTypes];
+      const staffMember = action.payload.staffMember || inititalState;
+      return {
+        ...staffMember
+      };
     }
   },
   inititalState

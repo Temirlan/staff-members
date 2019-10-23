@@ -7,7 +7,7 @@ const inititalState = [];
 export default handleActions(
   {
     [types.INITIAL_LOAD]: (state, action) => {
-      return [...state, ...action.payload.venues];
+      return [...action.payload.venues];
     }
   },
   inititalState
