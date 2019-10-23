@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TableTextCell from "../TableTextCell/TableTextCell";
+import Button from "../../../../../components/Button/Button";
 
 const TableRow = props => {
   const { id, staffType, fullName, venue, status } = props.staffMember;
@@ -24,7 +25,10 @@ const TableRow = props => {
       <TableTextCell>
         <p className="boss-table__label">Name</p>
         <p className="boss-table__text">
-          <Link to={`/staff_members/${id}`} className="boss-table__link">
+          <Link
+            to={`/staff_members/${id}/profile`}
+            className="boss-table__link"
+          >
             {fullName}
           </Link>
         </p>
@@ -32,7 +36,7 @@ const TableRow = props => {
       <TableTextCell>
         <p className="boss-table__label">Status</p>
         <p className="boss-table__text">
-          <button className={setStatusByClass(status)}>{status}</button>
+          <Button className={setStatusByClass(status)}>{status}</Button>
         </p>
       </TableTextCell>
       <TableTextCell>

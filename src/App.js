@@ -1,27 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import * as axios from "axios";
-
-import { URL_API, AUTN_TOKEN } from "./config";
 
 import StaffMembersPage from "./pages/StaffMembersPage/StaffMembersPage";
 import Header from "./components/Header/Header";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
-import { initialLoad } from "./redux/actions";
+import { fetchData } from "./redux/actions";
 
 class App extends React.Component {
   componentDidMount = () => {
-    axios
-      .get(URL_API, {
-        headers: {
-          Authorization: "Token token=" + AUTN_TOKEN
-        }
-      })
-      .then(response => {
-        this.props.initialLoad(response.data);
-      });
+    this.props.onFetchData();
   };
 
   render = () => {
@@ -34,7 +23,7 @@ class App extends React.Component {
               <Route exact path="/staff_members">
                 <StaffMembersPage />
               </Route>
-              <Route path="/staff_members/:idUser">
+              <Route path="/staff_members/:idUser/profile">
                 <ProfilePage />
               </Route>
             </Switch>
@@ -45,12 +34,14 @@ class App extends React.Component {
   };
 }
 
-const mapStateToProps = state => {
-  return {};
-};
+const mapStateToProps = () => ({});
 
-const mapDispatchToProps = {
-  initialLoad
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchData: () => {
+      dispatch(fetchData());
+    }
+  };
 };
 
 export default connect(
