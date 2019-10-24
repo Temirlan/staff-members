@@ -3,12 +3,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import Dashboard from "../../components/Dashboard/Dashboard";
 import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
-import DashboardProfile from "./components/DashboardProfile/DashboardProfile";
-import FlowWrapper from "./components/FlowWrapper/FlowWrapper";
 
 import { fetchProfileById } from "../../redux/actions";
+import ProfilePageDashboard from "./components/ProfilePageDashboard";
+import { getStaffMember } from "../../redux/selectors";
+
+import DetailsList from "./components/DetailsList";
 
 class ProfilePage extends React.Component {
   componentDidMount = () => {
@@ -18,18 +19,23 @@ class ProfilePage extends React.Component {
   render = () => {
     return (
       <div className="boss-page-main">
-        <Dashboard>
-          <DashboardProfile />
-        </Dashboard>
+        <ProfilePageDashboard staffMember={this.props.staffMember} />
+
         <ContentWrapper>
-          <FlowWrapper />
+          <div className="boss-page-main__flow">
+            <DetailsList staffMember={this.props.staffMember} />
+          </div>
         </ContentWrapper>
       </div>
     );
   };
 }
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => {
+  return {
+    staffMember: getStaffMember(state)
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {

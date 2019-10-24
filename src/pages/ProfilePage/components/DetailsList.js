@@ -1,10 +1,30 @@
 import React from "react";
 
-import Detail from "./Detail/Detail";
-import DetailPointer from "./DetailPointer/DetailPointer";
-import DetailContent from "./DetailContent/DetailContent";
-import DetailSubjects from "./DetailSubjects/DetailSubjects";
-import DetailSubjectsItem from "./DetailSubjectsItem/DetailSubjectsItem";
+import DetailSubjectsItem from "./DetailsList/DetailSubjectsItem/DetailSubjectsItem";
+
+const Detail = props => {
+  return (
+    <div className="boss-page-main__isle">
+      <section className="boss-details">{props.children}</section>
+    </div>
+  );
+};
+
+const DetailPointer = props => {
+  return (
+    <p className="boss-details__pointer">
+      <span className="boss-details__pointer-text">{props.number}</span>
+    </p>
+  );
+};
+
+const DetailContent = props => {
+  return <div className="boss-details__content">{props.children}</div>;
+};
+
+const DetailSubjects = props => {
+  return <ul className="boss-details__list">{props.children}</ul>;
+};
 
 const DetailsList = props => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const UserSummarySide = props => {
+const DashboardUserSummarySide = props => {
   return (
     <div className="boss-user-summary__side">
       <div className="boss-user-summary__avatar">
@@ -25,4 +25,4 @@ const UserSummarySide = props => {
   );
 };
 
-export default UserSummarySide;
+export default DashboardUserSummarySide;
