@@ -6,14 +6,14 @@ const TableImageCell = props => {
     <div className="boss-table__cell">
       <div className="boss-table__image">
         <Link
-          to={`/staff_members/${props.staffMember.id}/profile`}
+          to={`/staff_members/${props.id}/profile`}
           href="#"
           className="boss-table__link"
         >
           <div className="boss-avatar boss-avatar_type_combined boss-avatar_type_scannable">
-            {props.staffMember.avatarUrl && (
+            {props.avatarUrl && (
               <img
-                src={props.staffMember.avatarUrl}
+                src={props.avatarUrl}
                 className="boss-avatar__image"
                 alt="avatar"
               />

@@ -1,7 +1,7 @@
 import React from "react";
 import DetailsListContainer from "../../containers/DetailsListContainer";
 
-const Flow = props => {
+const FlowWrapper = props => {
   return (
     <div className="boss-page-main__flow">
       <DetailsListContainer />
@@ -9,4 +9,4 @@ const Flow = props => {
   );
 };
 
-export default Flow;
+export default FlowWrapper;

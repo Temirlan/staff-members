@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 
-import StaffMembersPageContainer from "./containers/StaffMembersPageContainer";
-import ProfilePageContainer from "./containers/ProfilePageContainer";
+import StaffMembersPage from "./pages/StaffMembersPage/StaffMembersPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 class App extends React.Component {
   render = () => {
@@ -15,10 +15,10 @@ class App extends React.Component {
             <Header />
             <Switch>
               <Route exact path="/staff_members">
-                <StaffMembersPageContainer />
+                <StaffMembersPage />
               </Route>
               <Route path="/staff_members/:idUser/profile">
-                <ProfilePageContainer />
+                <ProfilePage />
               </Route>
             </Switch>
           </>
