@@ -1,6 +1,6 @@
 import React from "react";
 
-import DetailSubjectsItem from "./DetailsList/DetailSubjectsItem/DetailSubjectsItem";
+import DetailSubjectsItem from "./DetailSubjectsItem";
 
 const Detail = props => {
   return (

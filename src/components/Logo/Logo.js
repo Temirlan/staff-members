@@ -6,7 +6,7 @@ const Logo = props => {
   return (
     <div className="boss-page-header__group boss-page-header__group_role_logo">
       <Link to="/staff_members" className="boss-page-header__logo">
-        BOSS
+        {props.name}
       </Link>
     </div>
   );
