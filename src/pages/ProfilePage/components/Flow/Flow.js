@@ -1,10 +1,10 @@
 import React from "react";
-import DetailsList from "../DetailsList/DetailsList";
+import DetailsListContainer from "../../containers/DetailsListContainer";
 
 const Flow = props => {
   return (
     <div className="boss-page-main__flow">
-      <DetailsList />
+      <DetailsListContainer />
     </div>
   );
 };

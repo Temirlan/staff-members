@@ -4,8 +4,8 @@ import UserSummaryContentContainer from "../../../containers/UserSummaryContentC
 
 const UserSummary = props => {
   return (
-    <div class="boss-page-dashboard__user-summary">
-      <div class="boss-user-summary">
+    <div className="boss-page-dashboard__user-summary">
+      <div className="boss-user-summary">
         <UserSummarySideContainer />
         <UserSummaryContentContainer />
       </div>

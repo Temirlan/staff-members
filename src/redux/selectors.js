@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import moment from "moment";
 
 export const staffMembersSelector = state => state.staffMembers;
 export const staffTypesSelector = state => state.staffTypes;
@@ -30,9 +31,31 @@ export const getStaffMember = createSelector(
         ? `${staffMember.firstName} ${staffMember.surname}`
         : "";
 
+    const startsAt = moment(staffMember.startsAt, "DD-MM-YYYY").format(
+      "ddd MM/DD/YYYY"
+    );
+    const createdAt = moment(staffMember.createdAt).format("ddd MM/DD/YYYY");
+
+    let otherVenues = "";
+
+    if (staffMember.otherVenueIds && staffMember.otherVenueIds.length > 0) {
+      venues.forEach(venue => {
+        const otherVenueId = staffMember.otherVenueIds.find(otherVenue => {
+          return otherVenue === venue.id;
+        });
+
+        if (venue.id === otherVenueId) {
+          otherVenues += venue.name + " ";
+        }
+      });
+    }
+
     return {
       ...staffMember,
       fullName,
+      startsAt,
+      createdAt,
+      otherVenues,
       staffType: staffTypes.find(
         staffType => staffType.id === staffMember.staffTypeId
       ),

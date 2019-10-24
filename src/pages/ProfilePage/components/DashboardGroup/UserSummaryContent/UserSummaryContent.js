@@ -6,7 +6,7 @@ const UserSummaryContent = props => {
   };
 
   return (
-    <div class="boss-user-summary__content">
+    <div className="boss-user-summary__content">
       {renderUserSummary(props.renderUserSummaryHeader)}
       {renderUserSummary(props.renderUserSummaryReviewList)}
       {renderUserSummary(props.renderUserSummaryContacts)}

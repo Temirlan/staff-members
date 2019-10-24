@@ -2,16 +2,16 @@ import React from "react";
 
 const UserSummaryContacts = props => {
   return (
-    <div class="boss-user-summary__contacts">
+    <div className="boss-user-summary__contacts">
       <a
         href="mailto:trulla.collier@yahoo.com"
-        class="boss-user-summary__link boss-user-summary__link_role_email boss-user-summary__link_adjust_wrap"
+        className="boss-user-summary__link boss-user-summary__link_role_email boss-user-summary__link_adjust_wrap"
       >
         {props.email && props.email}
       </a>
       <a
         href="tel:123342342"
-        class="boss-user-summary__link boss-user-summary__link_role_phone"
+        className="boss-user-summary__link boss-user-summary__link_role_phone"
       >
         {props.phoneNumber && props.phoneNumber}
       </a>

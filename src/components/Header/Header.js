@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import Logo from "./Logo/Logo";
 
 const Header = props => {
@@ -6,16 +8,16 @@ const Header = props => {
     <div className="boss-page-header">
       <div className="boss-page-header__inner">
         <Logo />
-        <a
-          href="#"
+        <Link
+          to="#"
           className="boss-page-header__action boss-page-header__action_role_search"
           data-dropdown="search"
-        ></a>
-        <a
-          href="#"
+        ></Link>
+        <Link
+          to="#"
           className="boss-page-header__action boss-page-header__action_role_profile"
           data-dropdown="profile"
-        ></a>
+        ></Link>
       </div>
     </div>
   );
