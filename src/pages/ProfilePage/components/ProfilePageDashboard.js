@@ -26,7 +26,7 @@ const ProfilePageDashboard = props => {
 
           <div className="boss-page-dashboard__buttons-group">
             <Link
-              to="#"
+              to={`/staff_members/${props.match.params.idUser}/profile/edit`}
               className="boss-button boss-button_role_edit boss-page-dashboard__button"
             >
               Edit Profile

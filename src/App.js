@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import StaffMembersPage from "./pages/StaffMembersPage/StaffMembersPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Logo from "./components/Logo/Logo";
+import ProfileEditPage from "./pages/ProfilePage/scenes/ProfileEditPage/ProfileEditPage";
 
 class App extends React.Component {
   render = () => {
@@ -31,6 +32,9 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/staff_members">
                 <StaffMembersPage />
+              </Route>
+              <Route exact path="/staff_members/:idUser/profile/edit">
+                <ProfileEditPage />
               </Route>
               <Route path="/staff_members/:idUser">
                 <ProfilePage />
