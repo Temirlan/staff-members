@@ -7,7 +7,7 @@ const TableImageCell = props => {
     <div className="boss-table__cell">
       <div className="boss-table__image">
         <Link
-          to={`/staff_members/${props.id}/profile`}
+          to={`/staff_members/${props.id}`}
           href="#"
           className="boss-table__link"
         >

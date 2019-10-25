@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { NavLink, withRouter, Link } from "react-router-dom";
 
 import Dashboard from "../../../components/Dashboard/Dashboard";
 import DashboardUserSummaryContent from "./DashboardUserSummaryContent";
@@ -41,42 +41,48 @@ const ProfilePageDashboard = props => {
         </div>
 
         <div className="boss-page-dashboard__switches">
-          <Link
-            to="#"
-            className="boss-button boss-button_type_small boss-button_role_profile boss-button_state_active boss-page-dashboard__switch"
+          <NavLink
+            to={`/staff_members/${props.match.params.idUser}/profile`}
+            className="boss-button boss-button_type_small boss-button_role_profile boss-page-dashboard__switch"
+            activeClassName="boss-button_state_active"
           >
             Profile
-          </Link>
-          <Link
-            to="#"
+          </NavLink>
+          <NavLink
+            to={`/staff_members/${props.match.params.idUser}/holidays`}
             className="boss-button boss-button_type_small boss-button_role_holidays boss-page-dashboard__switch"
+            activeClassName="boss-button_state_active"
           >
             Holidays
-          </Link>
-          <Link
-            to="#"
+          </NavLink>
+          <NavLink
+            to={`/staff_members/${props.match.params.idUser}/owed_hours`}
             className="boss-button boss-button_type_small boss-button_role_timelog boss-page-dashboard__switch"
+            activeClassName="boss-button_state_active"
           >
             Owed hours
-          </Link>
-          <Link
-            to="#"
+          </NavLink>
+          <NavLink
+            to={`/staff_members/${props.match.params.idUser}/accessories`}
             className="boss-button boss-button_type_small boss-button_role_accessories boss-page-dashboard__switch"
+            activeClassName="boss-button_state_active"
           >
             Accessories
-          </Link>
-          <Link
-            to="#"
+          </NavLink>
+          <NavLink
+            to={`/staff_members/${props.match.params.idUser}/shifts`}
             className="boss-button boss-button_type_small boss-button_role_shifts boss-page-dashboard__switch"
+            activeClassName="boss-button_state_active"
           >
             Shifts
-          </Link>
-          <Link
-            to="#"
+          </NavLink>
+          <NavLink
+            to={`/staff_members/${props.match.params.idUser}/payments`}
             className="boss-button boss-button_type_small boss-button_role_payments boss-page-dashboard__switch"
+            activeClassName="boss-button_state_active"
           >
             Payments
-          </Link>
+          </NavLink>
         </div>
       </div>
     </Dashboard>
@@ -91,4 +97,4 @@ ProfilePageDashboard.propTypes = {
   staffMember: PropTypes.object
 };
 
-export default ProfilePageDashboard;
+export default withRouter(ProfilePageDashboard);

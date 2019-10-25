@@ -32,7 +32,7 @@ const TableRow = props => {
       <TableImageCell avatarUrl={avatarUrl} id={id} />
 
       <TableTextCell label="Name">
-        <Link to={`/staff_members/${id}/profile`} className="boss-table__link">
+        <Link to={`/staff_members/${id}`} className="boss-table__link">
           {fullName}
         </Link>
       </TableTextCell>

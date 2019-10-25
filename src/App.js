@@ -32,7 +32,7 @@ class App extends React.Component {
               <Route exact path="/staff_members">
                 <StaffMembersPage />
               </Route>
-              <Route path="/staff_members/:idUser/profile">
+              <Route path="/staff_members/:idUser">
                 <ProfilePage />
               </Route>
             </Switch>
