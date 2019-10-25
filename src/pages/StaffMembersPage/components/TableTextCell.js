@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const TableTextCell = props => {
   return (
@@ -9,6 +10,11 @@ const TableTextCell = props => {
       </div>
     </div>
   );
+};
+
+TableTextCell.propTypes = {
+  label: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired
 };
 
 export default TableTextCell;

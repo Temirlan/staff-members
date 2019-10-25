@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 const DetailSubjectsItem = props => {
@@ -16,6 +17,14 @@ const DetailSubjectsItem = props => {
       <p className={valueClass}>{props.value ? props.value : props.children}</p>
     </li>
   );
+};
+
+DetailSubjectsItem.propTypes = {
+  classLabel: PropTypes.string,
+  classValue: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.string,
+  children: PropTypes.element
 };
 
 export default DetailSubjectsItem;

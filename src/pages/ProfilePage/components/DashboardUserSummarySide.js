@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const DashboardUserSummarySide = props => {
@@ -23,6 +24,12 @@ const DashboardUserSummarySide = props => {
       </div>
     </div>
   );
+};
+
+DashboardUserSummarySide.propTypes = {
+  firstName: PropTypes.string,
+  surname: PropTypes.string,
+  avatarUrl: PropTypes.string
 };
 
 export default DashboardUserSummarySide;

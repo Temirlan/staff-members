@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const UserSummaryHeader = props => {
@@ -53,6 +54,23 @@ const DashboardUserSummaryContent = props => {
       />
     </div>
   );
+};
+
+UserSummaryHeader.propTypes = {
+  fullName: PropTypes.string.isRequired
+};
+
+UserSummaryReviewList.propTypes = {
+  venue: PropTypes.shape({ id: PropTypes.number, name: PropTypes.string })
+};
+
+UserSummaryContacts.propTypes = {
+  email: PropTypes.string,
+  phoneNumber: PropTypes.string
+};
+
+DashboardUserSummaryContent.propTypes = {
+  staffMember: PropTypes.object
 };
 
 export default DashboardUserSummaryContent;

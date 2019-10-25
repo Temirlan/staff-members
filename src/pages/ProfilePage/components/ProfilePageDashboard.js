@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import Dashboard from "../../../components/Dashboard/Dashboard";
@@ -80,6 +81,14 @@ const ProfilePageDashboard = props => {
       </div>
     </Dashboard>
   );
+};
+
+DashboardUserSummary.propTypes = {
+  children: PropTypes.array.isRequired
+};
+
+ProfilePageDashboard.propTypes = {
+  staffMember: PropTypes.object
 };
 
 export default ProfilePageDashboard;

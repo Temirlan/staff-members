@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const StaffMembersCount = props => {
   return (
@@ -13,6 +14,11 @@ const StaffMembersCount = props => {
       </span>
     </div>
   );
+};
+
+StaffMembersCount.propTypes = {
+  count: PropTypes.string,
+  totalCount: PropTypes.string
 };
 
 export default StaffMembersCount;

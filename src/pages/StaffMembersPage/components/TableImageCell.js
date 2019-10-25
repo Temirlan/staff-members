@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const TableImageCell = props => {
@@ -23,6 +24,11 @@ const TableImageCell = props => {
       </div>
     </div>
   );
+};
+
+TableImageCell.propTypes = {
+  id: PropTypes.number,
+  avatarUrl: PropTypes.string
 };
 
 export default TableImageCell;

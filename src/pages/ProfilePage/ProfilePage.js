@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -43,6 +44,11 @@ const mapDispatchToProps = dispatch => {
       dispatch(fetchProfileById(idStaffMember));
     }
   };
+};
+
+ProfilePage.propTypes = {
+  staffMember: PropTypes.object,
+  onFetchProfile: PropTypes.func
 };
 
 export default connect(

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Header = props => {
   return (
@@ -6,6 +7,10 @@ const Header = props => {
       <div className="boss-page-header__inner">{props.children}</div>
     </div>
   );
+};
+
+Header.propTypes = {
+  children: PropTypes.element.isRequired
 };
 
 export default Header;

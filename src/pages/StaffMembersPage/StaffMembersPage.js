@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
@@ -19,8 +20,10 @@ class StaffMembersPage extends React.Component {
       <div className="boss-page-main">
         <StaffMembersDashboard count={this.props.count} title="Staff members" />
         <ContentWrapper>
-          <StaffMembersTable staffMembers={this.props.staffMembers} />
-          <StaffMembersCount count="4" totalCount="132" />
+          <>
+            <StaffMembersTable staffMembers={this.props.staffMembers} />
+            <StaffMembersCount count="4" totalCount="132" />
+          </>
         </ContentWrapper>
       </div>
     );
@@ -40,6 +43,12 @@ const mapDispatchToProps = dispatch => {
       dispatch(fetchData());
     }
   };
+};
+
+StaffMembersPage.propTypes = {
+  count: PropTypes.number,
+  staffMembers: PropTypes.array,
+  onFetchData: PropTypes.func
 };
 
 export default connect(

@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import TableRow from "./TableRow";
 
 const TableRowHeader = props => {
@@ -28,6 +30,18 @@ const StaffMembersTable = props => {
       <TableRowList staffMembers={props.staffMembers} />
     </div>
   );
+};
+
+TableRowHeader.propTypes = {
+  headers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+};
+
+TableRowList.propTypes = {
+  staffMembers: PropTypes.array
+};
+
+StaffMembersTable.propTypes = {
+  staffMembers: PropTypes.array
 };
 
 export default StaffMembersTable;

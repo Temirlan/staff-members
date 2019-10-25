@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Dashboard from "../../../components/Dashboard/Dashboard";
 
 const StaffMembersDashboard = props => {
@@ -25,6 +26,11 @@ const StaffMembersDashboard = props => {
       </div>
     </Dashboard>
   );
+};
+
+StaffMembersDashboard.propTypes = {
+  title: PropTypes.string,
+  count: PropTypes.number
 };
 
 export default StaffMembersDashboard;

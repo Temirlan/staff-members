@@ -14,17 +14,19 @@ class App extends React.Component {
         <Router>
           <>
             <Header>
-              <Logo name="BOSS" />
-              <Link
-                to="#"
-                className="boss-page-header__action boss-page-header__action_role_search"
-                data-dropdown="search"
-              ></Link>
-              <Link
-                to="#"
-                className="boss-page-header__action boss-page-header__action_role_profile"
-                data-dropdown="profile"
-              ></Link>
+              <>
+                <Logo name="BOSS" />
+                <Link
+                  to="#"
+                  className="boss-page-header__action boss-page-header__action_role_search"
+                  data-dropdown="search"
+                ></Link>
+                <Link
+                  to="#"
+                  className="boss-page-header__action boss-page-header__action_role_profile"
+                  data-dropdown="profile"
+                ></Link>
+              </>
             </Header>
             <Switch>
               <Route exact path="/staff_members">
