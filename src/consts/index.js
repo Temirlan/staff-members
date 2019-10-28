@@ -16,3 +16,5 @@ export const PATH_HOLIDAYS = "/staff_members/:idUser/holidays";
 export const PATH_PROFILE_PAGE = "/staff_members/:idUser";
 export const PATH_PROFILE_EDIT = "/staff_members/:idUser/profile/edit";
 export const PATH_STAFF_MEMBERS = "/staff_members";
+
+export const SELECT_OPTION = "react-select-2--option";

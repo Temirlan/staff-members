@@ -50,7 +50,14 @@ const ProfileEditContent = props => {
               <Route
                 exact
                 path={c.PATH_DEPLOYMENT_DETAILS}
-                component={EmploymentDetails}
+                render={() => (
+                  <EmploymentDetails
+                    payRates={props.payRates}
+                    venues={props.venues}
+                    staffTypes={props.staffTypes}
+                    staffMember={props.staffMember}
+                  />
+                )}
               />
               <Route
                 exact

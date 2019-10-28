@@ -31,7 +31,7 @@ class ProfilePage extends React.Component {
           <Route
             exact
             path={c.PATH_PROFILE}
-            render={props => (
+            render={() => (
               <ContentWrapper>
                 <div className="boss-page-main__flow">
                   <DetailsList staffMember={this.props.staffMember} />
