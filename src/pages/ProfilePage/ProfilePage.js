@@ -12,6 +12,7 @@ import { getStaffMember } from "../../redux/selectors";
 import { Accessories, Shifts, Payments, OwedHours, Holidays } from "./scenes";
 
 import DetailsList from "./components/DetailsList";
+import * as c from "../../consts";
 
 class ProfilePage extends React.Component {
   componentDidMount = () => {
@@ -27,28 +28,22 @@ class ProfilePage extends React.Component {
         <ProfilePageDashboard staffMember={this.props.staffMember} />
 
         <Switch>
-          <Route exact path="/staff_members/:idUser/profile">
-            <ContentWrapper>
-              <div className="boss-page-main__flow">
-                <DetailsList staffMember={this.props.staffMember} />
-              </div>
-            </ContentWrapper>
-          </Route>
-          <Route exact path="/staff_members/:idUser/accessories">
-            <Accessories />
-          </Route>
-          <Route exact path="/staff_members/:idUser/shifts">
-            <Shifts />
-          </Route>
-          <Route exact path="/staff_members/:idUser/payments">
-            <Payments />
-          </Route>
-          <Route exact path="/staff_members/:idUser/owed_hours">
-            <OwedHours />
-          </Route>
-          <Route exact path="/staff_members/:idUser/holidays">
-            <Holidays />
-          </Route>
+          <Route
+            exact
+            path={c.PATH_PROFILE}
+            render={props => (
+              <ContentWrapper>
+                <div className="boss-page-main__flow">
+                  <DetailsList staffMember={this.props.staffMember} />
+                </div>
+              </ContentWrapper>
+            )}
+          />
+          <Route exact path={c.PATH_ACCESSORIES} component={Accessories} />
+          <Route exact path={c.PATH_SHIFTS} component={Shifts} />
+          <Route exact path={c.PATH_PAYMENTS} component={Payments} />
+          <Route exact path={c.PATH_OWED_HOURS} component={OwedHours} />
+          <Route exact path={c.PATH_HOLIDAYS} component={Holidays} />
         </Switch>
       </div>
     );

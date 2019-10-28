@@ -8,6 +8,8 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Logo from "./components/Logo/Logo";
 import ProfileEditPage from "./pages/ProfilePage/scenes/ProfileEditPage/ProfileEditPage";
 
+import * as c from "./consts";
+
 class App extends React.Component {
   render = () => {
     return (
@@ -30,15 +32,13 @@ class App extends React.Component {
               </>
             </Header>
             <Switch>
-              <Route exact path="/staff_members">
-                <StaffMembersPage />
-              </Route>
-              <Route exact path="/staff_members/:idUser/profile/edit">
-                <ProfileEditPage />
-              </Route>
-              <Route path="/staff_members/:idUser">
-                <ProfilePage />
-              </Route>
+              <Route
+                exact
+                path={c.PATH_STAFF_MEMBERS}
+                component={StaffMembersPage}
+              />
+              <Route path={c.PATH_PROFILE_EDIT} component={ProfileEditPage} />
+              <Route path={c.PATH_PROFILE_PAGE} component={ProfilePage} />
             </Switch>
           </>
         </Router>

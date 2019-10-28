@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Dashboard from "../../../../../components/Dashboard/Dashboard";
 
 const ProfileEditDashboard = props => {
@@ -10,7 +10,7 @@ const ProfileEditDashboard = props => {
           <h1 className="boss-page-dashboard__title">{props.title}</h1>
           <div className="boss-page-dashboard__buttons-group boss-page-dashboard__buttons-group_position_last">
             <Link
-              to={``}
+              to={`/staff_members/${props.match.params.idUser}`}
               className="boss-button boss-button_role_cancel boss-page-dashboard__button"
             >
               {props.editCancel}
@@ -22,4 +22,4 @@ const ProfileEditDashboard = props => {
   );
 };
 
-export default ProfileEditDashboard;
+export default withRouter(ProfileEditDashboard);

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProfileEditDashboard from "./components/ProfileEditDashboard";
+import ProfileEditContent from "./components/ProfileEditContent";
 
 class ProfileEditPage extends React.Component {
   render = () => {
@@ -10,6 +11,7 @@ class ProfileEditPage extends React.Component {
           title="Edit Profile"
           editCancel="Cancel Editing"
         />
+        <ProfileEditContent />
       </div>
     );
   };
