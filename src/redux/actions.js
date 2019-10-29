@@ -8,6 +8,7 @@ export const initialLoad = createAction(types.INITIAL_LOAD);
 export const setOptionMainVenue = createAction(types.SET_OPTION_MAIN_VENUE);
 export const setOptionStaffType = createAction(types.SET_OPTION_STAFF_TYPES);
 export const setOptionPayRate = createAction(types.SET_OPTION_PAY_RATES);
+export const getOptions = createAction(types.GET_OPTION);
 
 export const fetchData = () => {
   return dispatch => {
@@ -33,6 +34,8 @@ export const fetchProfileById = idStaffMember => {
       })
       .then(response => {
         dispatch(initialLoad(response.data));
+
+        dispatch(getOptions(response.data));
       });
   };
 };

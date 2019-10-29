@@ -59,13 +59,7 @@ class ProfileEditContent extends React.Component {
                       payRates={this.props.payRates}
                       venues={this.props.venues}
                       staffTypes={this.props.staffTypes}
-                      staffMember={this.props.staffMember}
-                      setOptionMainVenue={this.props.setOptionMainVenue}
-                      setOptionStaffType={this.props.setOptionStaffType}
-                      optionMainVenue={this.props.optionMainVenue}
-                      optionStaffTypes={this.props.optionStaffTypes}
-                      setOptionPayRate={this.props.setOptionPayRate}
-                      optionPayRates={this.props.optionPayRates}
+                      staffMemberEdit={this.props.staffMemberEdit}
                     />
                   )}
                 />
