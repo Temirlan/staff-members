@@ -8,15 +8,12 @@ class Options extends React.Component {
     super(props);
 
     this.state = {
-      selectedId: this.props.venue
-        ? `${c.SELECT_OPTION}-${this.props.venue.id}`
-        : ""
+      selectedId: ""
     };
   }
 
   handleClick = e => {
-    this.props.setSelectOption(e.target.innerHTML);
-
+    this.props.setSelectionOption(e.target.innerHTML);
     this.setState({
       selectedId: e.target.id
     });
@@ -29,7 +26,7 @@ class Options extends React.Component {
   };
 
   render = () => {
-    return this.props.venues.map(venue => {
+    return this.props.options.map(venue => {
       return (
         <div
           id={`${c.SELECT_OPTION}-${venue.id}`}

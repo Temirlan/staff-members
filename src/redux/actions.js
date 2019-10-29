@@ -5,6 +5,10 @@ import { URL_API, AUTN_TOKEN } from "../config";
 
 export const initialLoad = createAction(types.INITIAL_LOAD);
 
+export const setOptionMainVenue = createAction(types.SET_OPTION_MAIN_VENUE);
+export const setOptionStaffType = createAction(types.SET_OPTION_STAFF_TYPES);
+export const setOptionPayRate = createAction(types.SET_OPTION_PAY_RATES);
+
 export const fetchData = () => {
   return dispatch => {
     return axios
