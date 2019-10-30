@@ -1,6 +1,10 @@
 import { createAction } from "redux-actions";
 import * as types from "./types";
-import { fetchDataRequest, fetchProfileByIdRequest } from "../service/fetchs";
+import {
+  fetchDataRequest,
+  fetchProfileByIdRequest,
+  updateEmploymentDeatailsRequest
+} from "../service/fetchs";
 
 export const initialLoad = createAction(types.INITIAL_LOAD);
 
@@ -20,9 +24,17 @@ export const fetchData = () => dispatch => {
   });
 };
 
-// export const updateEmploymentDeatails = values => (dispatch, getState) => {
-//   return updateEmploymentDeatailsRequest().then();
-// };
+export const updateEmploymentDeatails = values => (dispatch, getState) => {
+  return updateEmploymentDeatailsRequest(values).then(values => {
+    if (values.statusCode === 400) {
+      return values;
+    }
+
+    if (values.statusCode === 200) {
+      debugger;
+    }
+  });
+};
 
 export const fetchProfileById = idStaffMember => dispatch => {
   return fetchProfileByIdRequest(idStaffMember).then(response => {

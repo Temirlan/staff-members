@@ -1,5 +1,6 @@
 import React from "react";
 import ReSelect from "react-select";
+import FormFieldError from "./FormFieldError";
 
 class Select extends React.Component {
   handleChange = (value, multi, onChange) => {
@@ -19,8 +20,10 @@ class Select extends React.Component {
       clearable = false,
       valueKey,
       labelKey,
-      className
+      className,
+      meta
     } = this.props;
+
     return (
       <div className="boss-form__select">
         <ReSelect
@@ -37,6 +40,7 @@ class Select extends React.Component {
           placeholder=""
           searchable={false}
         />
+        {meta.submitError && <FormFieldError errors={meta.submitError} />}
       </div>
     );
   }

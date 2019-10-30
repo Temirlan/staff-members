@@ -9,7 +9,10 @@ import {
   staffTypesSelector
 } from "../../../../redux/selectors";
 
-import { fetchProfileById } from "../../../../redux/actions";
+import {
+  fetchProfileById,
+  updateEmploymentDeatails
+} from "../../../../redux/actions";
 
 class ProfileEditPage extends React.Component {
   componentDidMount = () => {
@@ -27,6 +30,7 @@ class ProfileEditPage extends React.Component {
           payRates={this.props.payRates}
           venues={this.props.venues}
           staffTypes={this.props.staffTypes}
+          onUpdateEmploymentDeatails={this.props.onUpdateEmploymentDeatails}
         />
       </div>
     );
@@ -47,6 +51,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onFetchProfile: idStaffMember => {
       dispatch(fetchProfileById(idStaffMember));
+    },
+    onUpdateEmploymentDeatails: values => {
+      return dispatch(updateEmploymentDeatails(values));
     }
   };
 };

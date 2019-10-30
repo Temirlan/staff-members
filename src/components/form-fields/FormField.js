@@ -1,6 +1,7 @@
 import React from "react";
 import FieldLabelText from "./FieldLabelText";
 import { Field } from "react-final-form";
+import Input from "./Input";
 
 const FormField = props => {
   const {
@@ -32,7 +33,7 @@ const FormField = props => {
         />
       )}
       {nameField === "Input" && (
-        <Field name={name} component={component} className={className} />
+        <Field name={name} component={Input} className={className} />
       )}
 
       {nameField === "DateInput" && (

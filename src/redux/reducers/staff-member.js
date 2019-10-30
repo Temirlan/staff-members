@@ -11,6 +11,12 @@ export default handleActions(
       return {
         ...staffMember
       };
+    },
+    [types.EDIT_EMPLOYMENT_DETAILS]: (state, action) => {
+      return {
+        ...state,
+        ...action.payload
+      };
     }
   },
   inititalState
