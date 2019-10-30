@@ -1,44 +1,39 @@
 import React from "react";
 import ReSelect from "react-select";
-import "react-select/dist/react-select.css";
 
 class Select extends React.Component {
-  handleChange = value => {
-    const {
-      input: { onChange },
-      multi = false
-    } = this.props;
-    console.log(value);
-    if (multi) {
-      const values = value.split(",").filter(Boolean);
+  handleChange = (value, multi, onChange) => {
+    if (multi && value) {
+      const values = value.split(",").map(value => parseInt(value));
       onChange(values);
     } else {
-      if (!value) {
-        onChange(null);
-      } else {
-        onChange(value);
-      }
+      onChange(value);
     }
   };
 
   render() {
     const {
       options,
-      input: { value },
+      input: { value, onChange },
       multi = false,
-      clearable = false
+      clearable = false,
+      valueKey,
+      labelKey,
+      className
     } = this.props;
     return (
       <div className="boss-form__select">
         <ReSelect
           name="select"
-          className="Select Select--single"
+          className={className}
           value={value}
+          valueKey={valueKey}
+          labelKey={labelKey}
           simpleValue
           multi={multi}
           clearable={clearable}
-          onChange={this.handleChange}
-          options={this.props.options}
+          onChange={value => this.handleChange(value, multi, onChange)}
+          options={options}
           placeholder=""
           searchable={false}
         />

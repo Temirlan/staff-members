@@ -1,7 +1,6 @@
-import * as axios from "axios";
 import { createAction } from "redux-actions";
 import * as types from "./types";
-import { URL_API, AUTN_TOKEN } from "../config";
+import { fetchDataRequest, fetchProfileByIdRequest } from "../service/fetchs";
 
 export const initialLoad = createAction(types.INITIAL_LOAD);
 
@@ -10,32 +9,23 @@ export const setOptionStaffType = createAction(types.SET_OPTION_STAFF_TYPES);
 export const setOptionPayRate = createAction(types.SET_OPTION_PAY_RATES);
 export const getOptions = createAction(types.GET_OPTION);
 
-export const fetchData = () => {
-  return dispatch => {
-    return axios
-      .get(URL_API, {
-        headers: {
-          Authorization: `Token token=${AUTN_TOKEN}`
-        }
-      })
-      .then(response => {
-        dispatch(initialLoad(response.data));
-      });
-  };
+/**
+ * 1. Create httpService, should return axios instance
+ * 2. Add forms handleSubmit(Promises), and update store with new data
+ * 3. Move http calls and handleSubmit to separate function calls(like updateEmploymentDetailsRequest)
+ */
+export const fetchData = () => dispatch => {
+  return fetchDataRequest().then(response => {
+    dispatch(initialLoad(response.data));
+  });
 };
 
-export const fetchProfileById = idStaffMember => {
-  return dispatch => {
-    return axios
-      .get(`${URL_API}/${idStaffMember}`, {
-        headers: {
-          Authorization: `Token token=${AUTN_TOKEN}`
-        }
-      })
-      .then(response => {
-        dispatch(initialLoad(response.data));
+// export const updateEmploymentDeatails = values => (dispatch, getState) => {
+//   return updateEmploymentDeatailsRequest().then();
+// };
 
-        dispatch(getOptions(response.data));
-      });
-  };
+export const fetchProfileById = idStaffMember => dispatch => {
+  return fetchProfileByIdRequest(idStaffMember).then(response => {
+    dispatch(initialLoad(response.data));
+  });
 };

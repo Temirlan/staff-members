@@ -54,14 +54,7 @@ class ProfileEditContent extends React.Component {
                 <Route
                   exact
                   path={c.PATH_DEPLOYMENT_DETAILS}
-                  render={() => (
-                    <EmploymentDetails
-                      payRates={this.props.payRates}
-                      venues={this.props.venues}
-                      staffTypes={this.props.staffTypes}
-                      staffMemberEdit={this.props.staffMemberEdit}
-                    />
-                  )}
+                  render={() => <EmploymentDetails {...this.props} />}
                 />
                 <Route
                   exact

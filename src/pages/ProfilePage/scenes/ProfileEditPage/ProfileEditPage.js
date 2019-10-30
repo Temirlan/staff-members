@@ -27,7 +27,6 @@ class ProfileEditPage extends React.Component {
           payRates={this.props.payRates}
           venues={this.props.venues}
           staffTypes={this.props.staffTypes}
-          staffMemberEdit={this.props.staffMemberEdit}
         />
       </div>
     );

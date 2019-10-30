@@ -1,20 +1,31 @@
 import React from "react";
-import { Form, Field } from "react-final-form";
+import { Form } from "react-final-form";
+import { FORM_ERROR } from "final-form";
 
 import ContentSwitcherHeader from "./components/ContentSwitcherHeader";
 import Select from "../../../../../components/form-fields/Select";
-import FieldLabelText from "../../../../../components/form-fields/FieldLabelText";
-import Input from "../../../../../components/form-fields/Input";
 import DateInput from "../../../../../components/form-fields/DateInput";
 import ChoiceList from "../../../../../components/form-fields/ChoiceList";
+import FormField from "../../../../../components/form-fields/FormField";
+
+function handleSubmit(values) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        [FORM_ERROR]: ["Something went wrong"],
+        masterVenueId: ["Error"],
+        otherVenueIds: ["Error"],
+        staffTypeId: ["Error"],
+        masterVenueId: ["Error"]
+      });
+      console.log(values);
+    }, 1500);
+  });
+}
 
 class EmploymentDetails extends React.Component {
   render = () => {
-    const {
-      venueOptions,
-      staffTypeOptions,
-      payRateOptions
-    } = this.props.staffMemberEdit;
+    const { payRates, staffTypes, venues } = this.props;
 
     return (
       <article
@@ -26,106 +37,91 @@ class EmploymentDetails extends React.Component {
         <div className="boss-content-switcher__content">
           <Form
             onSubmit={values => {
-              console.log(values);
+              return handleSubmit(values);
             }}
+            initialValues={{ statusStatement: "employment_status_a" }}
             render={({ handleSubmit, form, submitting, pristine, values }) => (
               <form onSubmit={handleSubmit}>
-                <div className="boss-form__field">
-                  <FieldLabelText text="Main Venue" />
-                  <Field
-                    name="mainVenue"
-                    component={Select}
-                    options={venueOptions}
-                  />
-                </div>
-                <div className="boss-form__field">
-                  <FieldLabelText text="Other Venues" />
-                  <Field
-                    name="otherVenues"
-                    component={Select}
-                    multi
-                    clearable
-                    options={venueOptions}
-                  />
-                </div>
-                <div className="boss-form__field">
-                  <FieldLabelText text="Staff Type*" />
-                  <Field name="staffType" component={Select} options={[]} />
-                </div>
+                <FormField
+                  textLabel="Main Venue"
+                  nameField="Select"
+                  name="masterVenueId"
+                  component={Select}
+                  options={venues}
+                  className="Select Select--single"
+                />
+                <FormField
+                  textLabel="Other Venues"
+                  nameField="Select"
+                  name="otherVenueIds"
+                  component={Select}
+                  multi
+                  clearable
+                  options={venues}
+                />
+                <FormField
+                  textLabel="Staff Type"
+                  requeredSymbol="*"
+                  nameField="Select"
+                  name="staffTypeId"
+                  component={Select}
+                  options={staffTypes}
+                  className="Select Select--single"
+                />
 
-                <div className="boss-form__field">
-                  <FieldLabelText text="Starts At*" />
-                  <Field name="StartsAt" component={DateInput} />
-                </div>
+                <FormField
+                  textLabel="Starts At"
+                  requeredSymbol="*"
+                  nameField="DateInput"
+                  name="startsAt"
+                  component={DateInput}
+                />
 
-                <div className="boss-form__field">
-                  <FieldLabelText text="Pay rate*" />
-                  <Field name="payRate" component={Select} options={[]} />
-                </div>
+                <FormField
+                  textLabel="Pay rate"
+                  requeredSymbol="*"
+                  nameField="Select"
+                  name="payRateId"
+                  component={Select}
+                  options={payRates}
+                  className="Select Select--single"
+                />
 
-                <div className="boss-form__field">
-                  <FieldLabelText text="Day Preference" />
-                  <Field
-                    name="dayPreference"
-                    render={() => (
-                      <Input
-                        name="day-pref"
-                        type="text"
-                        className="boss-form__input"
-                      />
-                    )}
-                  />
-                  <p className="boss-form__field-note">
-                    Preferred days to work displayed to the rota (e.g mornings
-                    and weekends)
-                  </p>
-                </div>
+                <FormField
+                  textLabel="Day Preference"
+                  nameField="Input"
+                  name="dayPreferenceNote"
+                  className="boss-form__input"
+                  component="input"
+                  description="Preferred days to work displayed to the rota (e.g mornings
+                    and weekends)"
+                />
 
-                <div className="boss-form__field">
-                  <FieldLabelText text="Hours Preference" />
-                  <Field
-                    name="hoursPreference"
-                    render={() => (
-                      <Input
-                        name="hours-pref"
-                        type="text"
-                        className="boss-form__input"
-                      />
-                    )}
-                  />
-                  <p className="boss-form__field-note">
-                    Preferred number of hours to work per week displayed in the
-                    rota (e.g 40,20+)
-                  </p>
-                </div>
+                <FormField
+                  textLabel="Hours Preference"
+                  nameField="Input"
+                  name="hoursPreferenceNote"
+                  className="boss-form__input"
+                  component="input"
+                  description="Preferred number of hours to work per week displayed in the
+                  rota (e.g 40,20+)"
+                />
 
-                <div className="boss-form__field">
-                  <FieldLabelText text="National Insurance Number" />
-                  <Field
-                    name="nationalInsuranceNumber"
-                    render={() => (
-                      <Input
-                        name="insurance-number"
-                        type="text"
-                        className="boss-form__input"
-                      />
-                    )}
-                  />
-                </div>
+                <FormField
+                  textLabel="National Insurance Number"
+                  nameField="Input"
+                  name="nationalInsuranceNumber"
+                  className="boss-form__input"
+                  component="input"
+                />
 
-                <div className="boss-form__field">
-                  <FieldLabelText text="Sage ID" />
-                  <Field
-                    name="sageId"
-                    render={() => (
-                      <Input
-                        name="sage-id"
-                        type="text"
-                        className="boss-form__input"
-                      />
-                    )}
-                  />
-                </div>
+                <FormField
+                  textLabel="Sage ID"
+                  nameField="Input"
+                  name="sageId"
+                  className="boss-form__input"
+                  component="input"
+                />
 
                 <div className="boss-form__field">
                   <ChoiceList
@@ -136,6 +132,7 @@ class EmploymentDetails extends React.Component {
 
                 <div className="boss-form__field boss-form__field_justify_end">
                   <button
+                    disabled={submitting}
                     className="boss-button boss-form__submit boss-form__submit_adjust_single"
                     type="submit"
                   >

@@ -1,6 +1,5 @@
 import React from "react";
 import { Field } from "react-final-form";
-import Input from "./Input";
 
 const ChoiceList = props => {
   return (
@@ -13,15 +12,11 @@ const ChoiceList = props => {
         <div className="boss-choice-list__controls">
           <label className="boss-choice-list__radio-label">
             <Field
-              name="radio-1"
-              render={() => (
-                <Input
-                  type="radio"
-                  name="employement-status"
-                  value="1"
-                  className="boss-choice-list__radio-button"
-                />
-              )}
+              name="statusStatement"
+              component="input"
+              type="radio"
+              value="employment_status_a"
+              className="boss-choice-list__radio-button"
             />
             <span className="boss-choice-list__radio-label-text">
               I have supplied my P45 from my previous employer
@@ -29,15 +24,11 @@ const ChoiceList = props => {
           </label>
           <label className="boss-choice-list__radio-label">
             <Field
-              name="radio-2"
-              render={() => (
-                <Input
-                  type="radio"
-                  name="employement-status"
-                  value="2"
-                  className="boss-choice-list__radio-button"
-                />
-              )}
+              name="statusStatement"
+              component="input"
+              type="radio"
+              value="employment_status_b"
+              className="boss-choice-list__radio-button"
             />
             <span className="boss-choice-list__radio-label-text">
               This is my first job since the 6th of April. I have not been
@@ -47,15 +38,11 @@ const ChoiceList = props => {
           </label>
           <label className="boss-choice-list__radio-label">
             <Field
-              name="radio-3"
-              render={() => (
-                <Input
-                  type="radio"
-                  name="employement-status"
-                  value="3"
-                  className="boss-choice-list__radio-button"
-                />
-              )}
+              name="statusStatement"
+              component="input"
+              type="radio"
+              value="employment_status_c"
+              className="boss-choice-list__radio-button"
             />
             <span className="boss-choice-list__radio-label-text">
               This is now my only job. Since the 6th of April I have had another
@@ -65,15 +52,11 @@ const ChoiceList = props => {
           </label>
           <label className="boss-choice-list__radio-label">
             <Field
-              name="radio-4"
-              render={() => (
-                <Input
-                  type="radio"
-                  name="employement-status"
-                  value="4"
-                  className="boss-choice-list__radio-button"
-                />
-              )}
+              name="statusStatement"
+              component="input"
+              type="radio"
+              value="employment_status_d"
+              className="boss-choice-list__radio-button"
             />
 
             <span className="boss-choice-list__radio-label-text">
@@ -82,15 +65,11 @@ const ChoiceList = props => {
           </label>
           <label className="boss-choice-list__radio-label">
             <Field
-              name="radio-5"
-              render={() => (
-                <Input
-                  type="radio"
-                  name="employement-status"
-                  value="5"
-                  className="boss-choice-list__radio-button"
-                />
-              )}
+              name="statusStatement"
+              component="input"
+              type="radio"
+              value="employment_status_e"
+              className="boss-choice-list__radio-button"
             />
             <span className="boss-choice-list__radio-label-text">
               I left a course of higher education before the 6th of April &amp;
