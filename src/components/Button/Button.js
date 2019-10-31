@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import "./Button.css";
 
 const Button = props => {
-  return <button className={props.className}>{props.children}</button>;
+  return <button {...props}>{props.children}</button>;
 };
 
 Button.propTypes = {

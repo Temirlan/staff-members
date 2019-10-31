@@ -3,7 +3,9 @@ import * as types from "./types";
 import {
   fetchDataRequest,
   fetchProfileByIdRequest,
-  updateEmploymentDeatailsRequest
+  updateEmploymentDeatailsRequest,
+  updatePersonalDetailsRequest,
+  updateContactDetailsRequest
 } from "../service/fetchs";
 
 export const initialLoad = createAction(types.INITIAL_LOAD);
@@ -12,6 +14,7 @@ export const setOptionMainVenue = createAction(types.SET_OPTION_MAIN_VENUE);
 export const setOptionStaffType = createAction(types.SET_OPTION_STAFF_TYPES);
 export const setOptionPayRate = createAction(types.SET_OPTION_PAY_RATES);
 export const getOptions = createAction(types.GET_OPTION);
+export const editDetails = createAction(types.EDIT_STAFF_MEMBER_DETAILS);
 
 /**
  * 1. Create httpService, should return axios instance
@@ -31,7 +34,36 @@ export const updateEmploymentDeatails = values => (dispatch, getState) => {
     }
 
     if (values.statusCode === 200) {
-      debugger;
+      dispatch(editDetails(values));
+      return values;
+    }
+  });
+};
+
+export const updatePersonalDetails = values => (dispatch, getState) => {
+  return updatePersonalDetailsRequest(values).then(values => {
+    if (values.statusCode === 400) {
+      return values;
+    }
+
+    if (values.statusCode === 200) {
+      const gender = values.gender === 1 ? "male" : "female";
+
+      dispatch(editDetails({ ...values, gender }));
+      return values;
+    }
+  });
+};
+
+export const updateContactDetails = values => (dispatch, getState) => {
+  return updateContactDetailsRequest(values).then(values => {
+    if (values.statusCode === 400) {
+      return values;
+    }
+
+    if (values.statusCode === 200) {
+      dispatch(editDetails(values));
+      return values;
     }
   });
 };

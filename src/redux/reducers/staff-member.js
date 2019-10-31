@@ -12,7 +12,7 @@ export default handleActions(
         ...staffMember
       };
     },
-    [types.EDIT_EMPLOYMENT_DETAILS]: (state, action) => {
+    [types.EDIT_STAFF_MEMBER_DETAILS]: (state, action) => {
       return {
         ...state,
         ...action.payload

@@ -1,17 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import ProfileEditDashboard from "./components/ProfileEditDashboard";
 import ProfileEditContent from "./components/ProfileEditContent";
 import {
   getStaffMember,
   payRatesSelector,
   venuesSelector,
-  staffTypesSelector
+  staffTypesSelector,
+  genderValuesSelector
 } from "../../../../redux/selectors";
-
 import {
   fetchProfileById,
-  updateEmploymentDeatails
+  updateEmploymentDeatails,
+  updatePersonalDetails,
+  updateContactDetails
 } from "../../../../redux/actions";
 
 class ProfileEditPage extends React.Component {
@@ -31,6 +34,9 @@ class ProfileEditPage extends React.Component {
           venues={this.props.venues}
           staffTypes={this.props.staffTypes}
           onUpdateEmploymentDeatails={this.props.onUpdateEmploymentDeatails}
+          onUpdatePersonalDetails={this.props.onUpdatePersonalDetails}
+          onUpdateContactDetails={this.props.onUpdateContactDetails}
+          genderValues={this.props.genderValues}
         />
       </div>
     );
@@ -42,6 +48,7 @@ const mapStateToProps = state => {
     staffMember: getStaffMember(state),
     payRates: payRatesSelector(state),
     venues: venuesSelector(state),
+    genderValues: genderValuesSelector(state),
     staffTypes: staffTypesSelector(state),
     staffMemberEdit: state.staffMemberEdit
   };
@@ -54,6 +61,12 @@ const mapDispatchToProps = dispatch => {
     },
     onUpdateEmploymentDeatails: values => {
       return dispatch(updateEmploymentDeatails(values));
+    },
+    onUpdatePersonalDetails: values => {
+      return dispatch(updatePersonalDetails(values));
+    },
+    onUpdateContactDetails: values => {
+      return dispatch(updateContactDetails(values));
     }
   };
 };

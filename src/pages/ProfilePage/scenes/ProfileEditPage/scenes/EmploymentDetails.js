@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { Form } from "react-final-form";
 
-import ContentSwitcherHeader from "./components/ContentSwitcherHeader";
+import ContentSwitcherHeader from "../components/ContentSwitcherHeader";
 import Select from "../../../../../components/form-fields/Select";
 import DateInput from "../../../../../components/form-fields/DateInput";
 import ChoiceList from "../../../../../components/form-fields/ChoiceList";
@@ -41,14 +41,7 @@ class EmploymentDetails extends React.Component {
               return this.handleSubmit(values);
             }}
             initialValues={{ statusStatement: "employment_status_a" }}
-            render={({
-              submitError,
-              handleSubmit,
-              form,
-              submitting,
-              pristine,
-              values
-            }) => {
+            render={({ submitError, handleSubmit, submitting }) => {
               return (
                 <form onSubmit={handleSubmit}>
                   <FormField

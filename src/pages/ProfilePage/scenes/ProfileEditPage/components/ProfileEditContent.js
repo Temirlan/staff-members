@@ -54,17 +54,37 @@ class ProfileEditContent extends React.Component {
                 <Route
                   exact
                   path={c.PATH_DEPLOYMENT_DETAILS}
-                  render={() => <EmploymentDetails {...this.props} />}
+                  render={() => (
+                    <EmploymentDetails
+                      payRates={this.props.payRates}
+                      venues={this.props.venues}
+                      staffTypes={this.props.staffTypes}
+                      onUpdateEmploymentDeatails={
+                        this.props.onUpdateEmploymentDeatails
+                      }
+                    />
+                  )}
                 />
                 <Route
                   exact
                   path={c.PATH_PERSONAL_DETAILS}
-                  component={PersonalDetails}
+                  render={() => (
+                    <PersonalDetails
+                      onUpdatePersonalDetails={
+                        this.props.onUpdatePersonalDetails
+                      }
+                      genderValues={this.props.genderValues}
+                    />
+                  )}
                 />
                 <Route
                   exact
                   path={c.PATH_CONTACT_DETAILS}
-                  component={ContactDetails}
+                  render={() => (
+                    <ContactDetails
+                      onUpdateContactDetails={this.props.onUpdateContactDetails}
+                    />
+                  )}
                 />
               </Switch>
             </section>

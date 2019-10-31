@@ -5,7 +5,7 @@ import staffMember from "./staff-member";
 import staffTypes from "./staff-types";
 import payRates from "./pay-rates";
 import venues from "./venues";
-import staffMemberEdit from "./staff-member-edit";
+import genderValues from "./gender-values";
 
 export default combineReducers({
   staffMembers,
@@ -13,5 +13,5 @@ export default combineReducers({
   payRates,
   staffTypes,
   venues,
-  staffMemberEdit
+  genderValues
 });

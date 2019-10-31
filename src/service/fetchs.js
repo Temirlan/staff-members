@@ -27,6 +27,61 @@ export const fetchProfileByIdRequest = idStaffMember => {
   return new HttpService().getStaffMemberById(idStaffMember);
 };
 
+export const updateContactDetailsRequest = values => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (
+        !values.email ||
+        !values.phoneNumber ||
+        !values.address ||
+        !values.postcode ||
+        !values.country ||
+        !values.county
+      ) {
+        resolve({
+          email: !values.email
+            ? [
+                "This is a required field!",
+                "It should be a correct email address!"
+              ]
+            : null,
+          phoneNumber: !values.phoneNumber
+            ? ["This is a required field!"]
+            : null,
+          address: !values.address ? ["This is a required field!"] : null,
+          postcode: !values.postcode ? ["This is a required field!"] : null,
+          country: !values.country ? ["This is a required field!"] : null,
+          county: !values.county ? ["This is a required field!"] : null,
+          [FORM_ERROR]: ["Something went wrong"],
+          message: "Error",
+          statusCode: 400
+        });
+      } else {
+        resolve({ ...values, statusCode: 200 });
+      }
+    }, 1500);
+  });
+};
+
+export const updatePersonalDetailsRequest = values => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (!values.firstName || !values.surname || !values.gender) {
+        resolve({
+          firstName: !values.firstName ? ["This is a required field!"] : null,
+          surname: !values.surname ? ["This is a required field!"] : null,
+          gender: !values.gender ? ["This is a required field!"] : null,
+          [FORM_ERROR]: ["Something went wrong"],
+          message: "Error",
+          statusCode: 400
+        });
+      } else {
+        resolve({ ...values, statusCode: 200 });
+      }
+    }, 1500);
+  });
+};
+
 export const updateEmploymentDeatailsRequest = values => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -34,7 +89,6 @@ export const updateEmploymentDeatailsRequest = values => {
         !values.masterVenueId ||
         !values.otherVenueIds ||
         !values.staffTypeId ||
-        !values.startsAt ||
         !values.payRateId ||
         !values.hoursPreferenceNote ||
         !values.dayPreferenceNote ||
@@ -51,7 +105,6 @@ export const updateEmploymentDeatailsRequest = values => {
           staffTypeId: !values.staffTypeId
             ? ["This is a required field!"]
             : null,
-          startsAt: !values.startsAt ? ["This is a required field!"] : null,
           payRateId: !values.payRateId ? ["This is a required field!"] : null,
           hoursPreferenceNote: !values.hoursPreferenceNote
             ? ["This is a required field!"]

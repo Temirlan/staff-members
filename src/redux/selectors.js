@@ -4,6 +4,7 @@ import moment from "moment";
 export const staffMembersSelector = state => state.staffMembers;
 export const staffTypesSelector = state => state.staffTypes;
 export const venuesSelector = state => state.venues;
+export const genderValuesSelector = state => state.genderValues;
 export const staffMemberSelector = state => state.staffMember;
 export const payRatesSelector = state => state.payRates;
 

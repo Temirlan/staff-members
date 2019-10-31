@@ -16,7 +16,9 @@ import * as c from "../../consts";
 
 class ProfilePage extends React.Component {
   componentDidMount = () => {
-    this.props.onFetchProfile(this.props.match.params.idUser);
+    setTimeout(() => {
+      this.props.onFetchProfile(this.props.match.params.idUser);
+    }, 5000);
   };
 
   render = () => {
