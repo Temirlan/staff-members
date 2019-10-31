@@ -3,19 +3,8 @@ import { connect } from "react-redux";
 
 import ProfileEditDashboard from "./components/ProfileEditDashboard";
 import ProfileEditContent from "./components/ProfileEditContent";
-import {
-  getStaffMember,
-  payRatesSelector,
-  venuesSelector,
-  staffTypesSelector,
-  genderValuesSelector
-} from "../../../../redux/selectors";
-import {
-  fetchProfileById,
-  updateEmploymentDeatails,
-  updatePersonalDetails,
-  updateContactDetails
-} from "../../../../redux/actions";
+import * as s from "../../../../redux/selectors";
+import * as a from "../../../../redux/actions";
 
 class ProfileEditPage extends React.Component {
   componentDidMount = () => {
@@ -31,6 +20,7 @@ class ProfileEditPage extends React.Component {
         />
         <ProfileEditContent
           payRates={this.props.payRates}
+          staffMember={this.props.staffMember}
           venues={this.props.venues}
           staffTypes={this.props.staffTypes}
           onUpdateEmploymentDeatails={this.props.onUpdateEmploymentDeatails}
@@ -45,11 +35,11 @@ class ProfileEditPage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    staffMember: getStaffMember(state),
-    payRates: payRatesSelector(state),
-    venues: venuesSelector(state),
-    genderValues: genderValuesSelector(state),
-    staffTypes: staffTypesSelector(state),
+    staffMember: s.getStaffMember(state),
+    payRates: s.payRatesSelector(state),
+    venues: s.venuesSelector(state),
+    genderValues: s.genderValuesSelector(state),
+    staffTypes: s.staffTypesSelector(state),
     staffMemberEdit: state.staffMemberEdit
   };
 };
@@ -57,16 +47,16 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onFetchProfile: idStaffMember => {
-      dispatch(fetchProfileById(idStaffMember));
+      dispatch(a.fetchProfileById(idStaffMember));
     },
     onUpdateEmploymentDeatails: values => {
-      return dispatch(updateEmploymentDeatails(values));
+      return dispatch(a.updateEmploymentDeatails(values));
     },
     onUpdatePersonalDetails: values => {
-      return dispatch(updatePersonalDetails(values));
+      return dispatch(a.updatePersonalDetails(values));
     },
     onUpdateContactDetails: values => {
-      return dispatch(updateContactDetails(values));
+      return dispatch(a.updateContactDetails(values));
     }
   };
 };

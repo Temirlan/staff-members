@@ -62,6 +62,7 @@ class ProfileEditContent extends React.Component {
                       onUpdateEmploymentDeatails={
                         this.props.onUpdateEmploymentDeatails
                       }
+                      staffMember={this.props.staffMember}
                     />
                   )}
                 />

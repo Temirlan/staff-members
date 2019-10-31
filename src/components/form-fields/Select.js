@@ -23,7 +23,6 @@ class Select extends React.Component {
       className,
       meta
     } = this.props;
-
     return (
       <div className="boss-form__select">
         <ReSelect
@@ -40,7 +39,9 @@ class Select extends React.Component {
           placeholder=""
           searchable={false}
         />
-        {meta.submitError && <FormFieldError errors={meta.submitError} />}
+        {meta.submitError && meta.touched && (
+          <FormFieldError errors={meta.submitError} />
+        )}
       </div>
     );
   }
