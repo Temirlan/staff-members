@@ -1,25 +1,14 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-import { Form } from "react-final-form";
+import { connect } from "react-redux";
 
 import ContentSwitcherHeader from "../components/ContentSwitcherHeader";
-import { PATH_STAFF_MEMBERS } from "../../../../../consts";
 import PersonalDetailsForm from "../components/PersonalDetailsForm";
 
-const PersonalDetails = props => {
-  const handleSubmit = values => {
-    return props.onUpdatePersonalDetails(values).then(values => {
-      if (values.statusCode === 400) {
-        return values;
-      }
+import * as s from "../../../../../redux/selectors";
+import * as a from "../../../../../redux/actions";
 
-      if (values.statusCode === 200) {
-        props.history.push(
-          `${PATH_STAFF_MEMBERS}/${props.match.params.idUser}`
-        );
-      }
-    });
-  };
+const PersonalDetails = props => {
+  const { staffMember, genderValues, onUpdatePersonalDetails } = props;
 
   return (
     <article
@@ -28,14 +17,32 @@ const PersonalDetails = props => {
     >
       <ContentSwitcherHeader title="Personal Details" />
       <div className="boss-content-switcher__content">
-        <Form
-          onSubmit={handleSubmit}
-          component={PersonalDetailsForm}
-          {...props}
+        <PersonalDetailsForm
+          staffMember={staffMember}
+          onSubmit={onUpdatePersonalDetails}
+          genderValues={genderValues}
         />
       </div>
     </article>
   );
 };
 
-export default withRouter(PersonalDetails);
+const mapStateToProps = state => {
+  return {
+    staffMember: s.staffMemberSelector(state),
+    genderValues: s.getGenderValues(state)
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onUpdatePersonalDetails: values => {
+      return dispatch(a.updatePersonalDetails(values));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PersonalDetails);

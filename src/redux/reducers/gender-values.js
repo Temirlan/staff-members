@@ -7,13 +7,7 @@ const inititalState = [];
 export default handleActions(
   {
     [types.INITIAL_LOAD]: (state, action) => {
-      const genderValues =
-        (action.payload.genderValues &&
-          action.payload.genderValues.map((gender, index) => ({
-            id: index + 1,
-            name: gender
-          }))) ||
-        inititalState;
+      const genderValues = action.payload.genderValues || inititalState;
       return [...genderValues];
     }
   },

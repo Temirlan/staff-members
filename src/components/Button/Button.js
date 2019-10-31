@@ -1,22 +1,27 @@
 import React from "react";
+import classNames from "classnames";
 import PropTypes from "prop-types";
 
 import "./Button.css";
 
 const Button = props => {
-  if (props.destination === "FormButton") {
-    return (
-      <div className="boss-form__field boss-form__field_justify_end">
-        <button {...props}>{props.children}</button>
-      </div>
-    );
-  }
+  const { disabled, onClick, type } = props;
 
-  return <button {...props}>{props.children}</button>;
+  return (
+    <button
+      disabled={disabled}
+      onClick={onClick}
+      className={classNames({
+        "boss-button boss-form__submit boss-form__submit_adjust_single":
+          type === "form"
+      })}
+    >
+      {props.children}
+    </button>
+  );
 };
 
 Button.propTypes = {
-  className: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired
 };
 

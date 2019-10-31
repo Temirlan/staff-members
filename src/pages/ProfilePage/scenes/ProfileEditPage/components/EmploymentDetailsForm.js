@@ -1,121 +1,109 @@
 import React from "react";
-import FormField from "../../../../../components/form-fields/FormField";
+import { Form, Field } from "react-final-form";
+
 import Select from "../../../../../components/form-fields/Select";
 import DateInput from "../../../../../components/form-fields/DateInput";
 import ChoiceList from "../../../../../components/form-fields/ChoiceList";
 import FormFieldError from "../../../../../components/form-fields/FormFieldError";
 import Button from "../../../../../components/Button/Button";
+import Input from "../../../../../components/form-fields/Input";
 
 const EmploymentDetailsForm = props => {
-  const {
-    payRates,
-    staffTypes,
-    venues,
-    submitError,
-    handleSubmit,
-    submitting
-  } = props;
+  const { payRates, staffTypes, venues, onSubmit, initialValues } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormField
-        textLabel="Main Venue"
-        nameField="Select"
-        name="masterVenueId"
-        component={Select}
-        options={venues}
-        className="Select Select--single"
-      />
-      <FormField
-        textLabel="Other Venues"
-        nameField="Select"
-        name="otherVenueIds"
-        component={Select}
-        multi
-        clearable
-        options={venues}
-      />
-      <FormField
-        textLabel="Staff Type"
-        requeredSymbol="*"
-        nameField="Select"
-        name="staffTypeId"
-        component={Select}
-        options={staffTypes}
-        className="Select Select--single"
-      />
+    <>
+      <Form
+        onSubmit={onSubmit}
+        initialValues={initialValues}
+        render={({ submitError, handleSubmit, submitting }) => (
+          <>
+            <Field
+              textLabel="Main Venue"
+              name="masterVenueId"
+              component={Select}
+              options={venues}
+              valueKey="id"
+              labelKey="name"
+            />
+            <Field
+              textLabel="Other Venues"
+              name="otherVenueIds"
+              component={Select}
+              options={venues}
+              multi
+              clearable
+              valueKey="id"
+              labelKey="name"
+            />
+            <Field
+              textLabel="Staff Type"
+              requeredSymbol="*"
+              name="staffTypeId"
+              component={Select}
+              options={staffTypes}
+              valueKey="id"
+              labelKey="name"
+            />
 
-      <FormField
-        textLabel="Starts At"
-        requeredSymbol="*"
-        nameField="DateInput"
-        name="startsAt"
-        component={DateInput}
-      />
+            <Field
+              textLabel="Starts At"
+              requeredSymbol="*"
+              name="startsAt"
+              component={DateInput}
+              options={staffTypes}
+            />
 
-      <FormField
-        textLabel="Pay rate"
-        requeredSymbol="*"
-        nameField="Select"
-        name="payRateId"
-        component={Select}
-        options={payRates}
-        className="Select Select--single"
-      />
+            <Field
+              textLabel="Pay rate"
+              requeredSymbol="*"
+              name="payRateId"
+              component={Select}
+              options={payRates}
+              valueKey="id"
+              labelKey="name"
+            />
 
-      <FormField
-        textLabel="Day Preference"
-        nameField="Input"
-        name="dayPreferenceNote"
-        className="boss-form__input"
-        component="input"
-        description="Preferred days to work displayed to the rota (e.g mornings
+            <Field
+              textLabel="Day Preference"
+              name="dayPreferenceNote"
+              component={Input}
+              description="Preferred days to work displayed to the rota (e.g mornings
       and weekends)"
-      />
+            />
 
-      <FormField
-        textLabel="Hours Preference"
-        nameField="Input"
-        name="hoursPreferenceNote"
-        className="boss-form__input"
-        component="input"
-        description="Preferred number of hours to work per week displayed in the
+            <Field
+              textLabel="Hours Preference"
+              name="hoursPreferenceNote"
+              component={Input}
+              description="Preferred number of hours to work per week displayed in the
     rota (e.g 40,20+)"
+            />
+
+            <Field
+              textLabel="National Insurance Number"
+              name="nationalInsuranceNumber"
+              component={Input}
+            />
+
+            <Field textLabel="Sage ID" name="sageId" component={Input} />
+
+            <div className="boss-form__field">
+              <ChoiceList
+                title="Starter Employement Status Statement"
+                text="Tick one that applies"
+              />
+            </div>
+            {submitError && <FormFieldError errors={submitError} />}
+            <div className="boss-form__field boss-form__field_justify_end">
+              <Button disabled={submitting} type="form" onClick={handleSubmit}>
+                Save
+              </Button>
+            </div>
+          </>
+        )}
       />
-
-      <FormField
-        textLabel="National Insurance Number"
-        nameField="Input"
-        name="nationalInsuranceNumber"
-        className="boss-form__input"
-        component="input"
-      />
-
-      <FormField
-        textLabel="Sage ID"
-        nameField="Input"
-        name="sageId"
-        className="boss-form__input"
-        component="input"
-      />
-
-      <div className="boss-form__field">
-        <ChoiceList
-          title="Starter Employement Status Statement"
-          text="Tick one that applies"
-        />
-      </div>
-      {submitError && <FormFieldError errors={submitError} />}
-
-      <Button
-        disabled={submitting}
-        className="boss-button boss-form__submit boss-form__submit_adjust_single"
-        destination="FormButton"
-        type="submit"
-      >
-        Save
-      </Button>
-    </form>
+    </>
   );
 };
 

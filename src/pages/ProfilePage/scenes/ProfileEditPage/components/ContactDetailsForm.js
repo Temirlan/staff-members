@@ -1,71 +1,51 @@
 import React from "react";
-import FormField from "../../../../../components/form-fields/FormField";
+import { Form, Field } from "react-final-form";
+
 import Input from "../../../../../components/form-fields/Input";
 import FormFieldError from "../../../../../components/form-fields/FormFieldError";
 import Button from "../../../../../components/Button/Button";
 
 const ContactDetailsForm = props => {
-  const { submitError, handleSubmit, submitting } = props;
+  const {
+    onSubmit,
+    staffMember: { email, phoneNumber, address, postcode, country, county }
+  } = props;
+
   return (
-    <form onSubmit={handleSubmit}>
-      <FormField
-        textLabel="Email"
-        nameField="Input"
-        name="email"
-        component={Input}
-        className="boss-form__input"
-      />
+    <>
+      <Form
+        onSubmit={onSubmit}
+        initialValues={{
+          email,
+          phoneNumber,
+          address,
+          postcode,
+          country,
+          county
+        }}
+        render={({ submitError, handleSubmit, submitting }) => (
+          <>
+            <Field textLabel="Email" name="email" component={Input} />
+            <Field
+              textLabel="Phone number"
+              name="phoneNumber"
+              component={Input}
+            />
+            <Field textLabel="Address" name="address" component={Input} />
+            <Field textLabel="Postcode" name="postcode" component={Input} />
+            <Field textLabel="Country" name="country" component={Input} />
+            <Field textLabel="County" name="county" component={Input} />
 
-      <FormField
-        textLabel="Phone number"
-        nameField="Input"
-        name="phoneNumber"
-        component={Input}
-        className="boss-form__input"
+            {submitError && <FormFieldError errors={submitError} />}
+            <div className="boss-form__field boss-form__field_justify_end">
+              <Button disabled={submitting} onClick={handleSubmit} type="form">
+                Save
+              </Button>
+            </div>
+          </>
+        )}
       />
-
-      <FormField
-        textLabel="Address"
-        nameField="Input"
-        name="address"
-        component={Input}
-        className="boss-form__input"
-      />
-
-      <FormField
-        textLabel="Postcode"
-        nameField="Input"
-        name="postcode"
-        component={Input}
-        className="boss-form__input"
-      />
-
-      <FormField
-        textLabel="Country"
-        nameField="Input"
-        name="country"
-        component={Input}
-        className="boss-form__input"
-      />
-
-      <FormField
-        textLabel="County"
-        nameField="Input"
-        name="county"
-        component={Input}
-        className="boss-form__input"
-      />
-
-      {submitError && <FormFieldError errors={submitError} />}
-      <Button
-        disabled={submitting}
-        destination="FormButton"
-        className="boss-button boss-form__submit boss-form__submit_adjust_single"
-        type="submit"
-      >
-        Save
-      </Button>
-    </form>
+    </>
   );
 };
 

@@ -8,6 +8,16 @@ export const genderValuesSelector = state => state.genderValues;
 export const staffMemberSelector = state => state.staffMember;
 export const payRatesSelector = state => state.payRates;
 
+export const getGenderValues = createSelector(
+  [genderValuesSelector],
+  genderValues => {
+    return genderValues.map((gender, index) => ({
+      id: index + 1,
+      name: gender
+    }));
+  }
+);
+
 export const getStaffMembers = createSelector(
   [staffMembersSelector, staffTypesSelector, venuesSelector],
   (staffMembers, staffTypes, venues) => {
@@ -32,9 +42,9 @@ export const getStaffMember = createSelector(
         ? `${staffMember.firstName} ${staffMember.surname}`
         : "";
 
-    const startsAt = moment(staffMember.startsAt, "DD-MM-YYYY").format(
-      "ddd MM/DD/YYYY"
-    );
+    // const startsAt = moment(staffMember.startsAt, "DD-MM-YYYY").format(
+    //   "ddd MM/DD/YYYY"
+    // );
     const createdAt = moment(staffMember.createdAt).format("ddd MM/DD/YYYY");
 
     let otherVenues = "";
@@ -54,7 +64,6 @@ export const getStaffMember = createSelector(
     return {
       ...staffMember,
       fullName,
-      startsAt,
       createdAt,
       otherVenues,
       staffType: staffTypes.find(
