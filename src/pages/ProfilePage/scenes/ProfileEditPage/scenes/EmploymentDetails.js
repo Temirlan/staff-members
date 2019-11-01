@@ -1,15 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import ContentSwitcherHeader from "../components/ContentSwitcherHeader";
 import EmploymentDetailsForm from "../components/EmploymentDetailsForm";
 
+import * as s from "../../../../../redux/selectors";
+import * as a from "../../../../../redux/actions";
+
 const EmploymentDetails = props => {
-  const {
-    staffMember: { statusStatement },
-    payRates,
-    staffTypes,
-    venues
-  } = props;
+  const { staffMember, payRates, staffTypes, venues, errorStatusCode } = props;
 
   return (
     <article
@@ -23,11 +22,33 @@ const EmploymentDetails = props => {
           staffTypes={staffTypes}
           venues={venues}
           onSubmit={props.onUpdateEmploymentDeatails}
-          initialValues={{ statusStatement }}
+          staffMember={staffMember}
+          errorStatusCode={errorStatusCode}
         />
       </div>
     </article>
   );
 };
 
-export default EmploymentDetails;
+const mapStateToProps = state => {
+  return {
+    staffMember: s.getStaffMember(state),
+    payRates: s.payRatesSelector(state),
+    venues: s.venuesSelector(state),
+    staffTypes: s.staffTypesSelector(state),
+    errorStatusCode: state.errors.employmentDetails.statusCode
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onUpdateEmploymentDeatails: values => {
+      return dispatch(a.updateEmploymentDeatails(values));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EmploymentDetails);

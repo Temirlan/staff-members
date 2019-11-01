@@ -7,6 +7,7 @@ import {
   updatePersonalDetailsRequest,
   updateContactDetailsRequest
 } from "../service/fetchs";
+import moment from "moment";
 
 export const initialLoad = createAction(types.INITIAL_LOAD);
 
@@ -15,6 +16,9 @@ export const setOptionStaffType = createAction(types.SET_OPTION_STAFF_TYPES);
 export const setOptionPayRate = createAction(types.SET_OPTION_PAY_RATES);
 export const getOptions = createAction(types.GET_OPTION);
 export const editDetails = createAction(types.EDIT_STAFF_MEMBER_DETAILS);
+export const errorEditEmploymentDetails = createAction(
+  types.ERROR_EDIT_EMPLOYMENT_DETAILS
+);
 
 /**
  * 1. Create httpService, should return axios instance
@@ -29,12 +33,18 @@ export const fetchData = () => dispatch => {
 
 export const updateEmploymentDeatails = values => (dispatch, getState) => {
   return updateEmploymentDeatailsRequest(values).then(values => {
-    if (values.statusCode === 400) {
+    if (values.statusCode === 422) {
+      dispatch(errorEditEmploymentDetails(422));
       return values;
     }
 
     if (values.statusCode === 200) {
-      dispatch(editDetails(values));
+      dispatch(
+        editDetails({
+          ...values,
+          startsAt: moment(values.startsAt, "DD-MM-YYYY").format("DD-MM-YYYY")
+        })
+      );
       return values;
     }
   });
@@ -42,7 +52,7 @@ export const updateEmploymentDeatails = values => (dispatch, getState) => {
 
 export const updatePersonalDetails = values => (dispatch, getState) => {
   return updatePersonalDetailsRequest(values).then(values => {
-    if (values.statusCode === 400) {
+    if (values.statusCode === 422) {
       return values;
     }
 
@@ -57,7 +67,7 @@ export const updatePersonalDetails = values => (dispatch, getState) => {
 
 export const updateContactDetails = values => (dispatch, getState) => {
   return updateContactDetailsRequest(values).then(values => {
-    if (values.statusCode === 400) {
+    if (values.statusCode === 422) {
       return values;
     }
 

@@ -4,19 +4,51 @@ import { Form, Field } from "react-final-form";
 import Select from "../../../../../components/form-fields/Select";
 import DateInput from "../../../../../components/form-fields/DateInput";
 import ChoiceList from "../../../../../components/form-fields/ChoiceList";
-import FormFieldError from "../../../../../components/form-fields/FormFieldError";
 import Button from "../../../../../components/Button/Button";
 import Input from "../../../../../components/form-fields/Input";
+import moment from "../../../../../../../../Library/Caches/typescript/3.6/node_modules/moment/moment";
 
 const EmploymentDetailsForm = props => {
-  const { payRates, staffTypes, venues, onSubmit, initialValues } = props;
+  const {
+    payRates,
+    staffTypes,
+    venues,
+    onSubmit,
+    staffMember: {
+      statusStatement,
+      venue,
+      otherVenueIds,
+      staffType,
+      startsAt,
+      payRate,
+      hoursPreferenceNote,
+      dayPreferenceNote,
+      nationalInsuranceNumber,
+      masterVenueId,
+      staffTypeId,
+      sageId,
+      payRateId
+    },
+    errorStatusCode
+  } = props;
 
   return (
     <>
       <Form
         onSubmit={onSubmit}
-        initialValues={initialValues}
-        render={({ submitError, handleSubmit, submitting }) => (
+        initialValues={{
+          statusStatement,
+          otherVenueIds,
+          startsAt: startsAt ? moment(startsAt, "DD-MM-YYYY") : null,
+          hoursPreferenceNote,
+          dayPreferenceNote,
+          nationalInsuranceNumber,
+          sageId,
+          masterVenueId,
+          staffTypeId,
+          payRateId
+        }}
+        render={({ handleSubmit, submitting }) => (
           <>
             <Field
               textLabel="Main Venue"
@@ -25,16 +57,20 @@ const EmploymentDetailsForm = props => {
               options={venues}
               valueKey="id"
               labelKey="name"
+              option={venue && venue.id}
+              statusCode={errorStatusCode}
             />
             <Field
               textLabel="Other Venues"
               name="otherVenueIds"
               component={Select}
               options={venues}
+              ids={otherVenueIds}
               multi
               clearable
               valueKey="id"
               labelKey="name"
+              statusCode={errorStatusCode}
             />
             <Field
               textLabel="Staff Type"
@@ -42,8 +78,10 @@ const EmploymentDetailsForm = props => {
               name="staffTypeId"
               component={Select}
               options={staffTypes}
+              option={staffType && staffType.id}
               valueKey="id"
               labelKey="name"
+              statusCode={errorStatusCode}
             />
 
             <Field
@@ -60,8 +98,10 @@ const EmploymentDetailsForm = props => {
               name="payRateId"
               component={Select}
               options={payRates}
+              option={payRate && payRate.id}
               valueKey="id"
               labelKey="name"
+              statusCode={errorStatusCode}
             />
 
             <Field
@@ -70,6 +110,7 @@ const EmploymentDetailsForm = props => {
               component={Input}
               description="Preferred days to work displayed to the rota (e.g mornings
       and weekends)"
+              statusCode={errorStatusCode}
             />
 
             <Field
@@ -78,15 +119,22 @@ const EmploymentDetailsForm = props => {
               component={Input}
               description="Preferred number of hours to work per week displayed in the
     rota (e.g 40,20+)"
+              statusCode={errorStatusCode}
             />
 
             <Field
               textLabel="National Insurance Number"
               name="nationalInsuranceNumber"
               component={Input}
+              statusCode={errorStatusCode}
             />
 
-            <Field textLabel="Sage ID" name="sageId" component={Input} />
+            <Field
+              textLabel="Sage ID"
+              name="sageId"
+              component={Input}
+              statusCode={errorStatusCode}
+            />
 
             <div className="boss-form__field">
               <ChoiceList
@@ -94,7 +142,6 @@ const EmploymentDetailsForm = props => {
                 text="Tick one that applies"
               />
             </div>
-            {submitError && <FormFieldError errors={submitError} />}
             <div className="boss-form__field boss-form__field_justify_end">
               <Button disabled={submitting} type="form" onClick={handleSubmit}>
                 Save

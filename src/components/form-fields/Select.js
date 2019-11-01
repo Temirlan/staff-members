@@ -7,7 +7,7 @@ import FieldLabelText from "./FieldLabelText";
 const Select = props => {
   const {
     options,
-    input: { onChange },
+    input: { value, onChange },
     multi = false,
     clearable = false,
     valueKey,
@@ -15,8 +15,9 @@ const Select = props => {
     meta,
     textLabel,
     requeredSymbol,
-    option
+    statusCode
   } = props;
+
   const handleChange = value => {
     if (multi && value) {
       const values = value.split(",").map(value => parseInt(value));
@@ -25,7 +26,6 @@ const Select = props => {
       onChange(value);
     }
   };
-
   return (
     <div className="boss-form__field">
       <div className="boss-form__select">
@@ -33,7 +33,7 @@ const Select = props => {
         <ReSelect
           name="select"
           className={classNames({ "Select Select--single": !multi })}
-          value={props.options.find(opt => opt.name === option)}
+          value={value}
           valueKey={valueKey}
           labelKey={labelKey}
           simpleValue
@@ -44,7 +44,7 @@ const Select = props => {
           placeholder=""
           searchable={false}
         />
-        {meta.submitError && meta.touched && (
+        {meta.submitError && statusCode === 422 && (
           <FormFieldError errors={meta.submitError} />
         )}
       </div>

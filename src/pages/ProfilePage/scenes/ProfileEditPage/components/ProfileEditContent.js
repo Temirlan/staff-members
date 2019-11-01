@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, withRouter, Switch, Route, Redirect } from "react-router-dom";
+import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 import ContentWrapper from "../../../../../components/ContentWrapper/ContentWrapper";
 import EmploymentDetails from "../scenes/EmploymentDetails";
 import PersonalDetails from "../scenes/PersonalDetails";
@@ -54,38 +54,17 @@ class ProfileEditContent extends React.Component {
                 <Route
                   exact
                   path={c.PATH_DEPLOYMENT_DETAILS}
-                  render={() => (
-                    <EmploymentDetails
-                      payRates={this.props.payRates}
-                      venues={this.props.venues}
-                      staffTypes={this.props.staffTypes}
-                      onUpdateEmploymentDeatails={
-                        this.props.onUpdateEmploymentDeatails
-                      }
-                      staffMember={this.props.staffMember}
-                    />
-                  )}
+                  component={EmploymentDetails}
                 />
                 <Route
                   exact
                   path={c.PATH_PERSONAL_DETAILS}
-                  render={() => (
-                    <PersonalDetails
-                      onUpdatePersonalDetails={
-                        this.props.onUpdatePersonalDetails
-                      }
-                      genderValues={this.props.genderValues}
-                    />
-                  )}
+                  component={PersonalDetails}
                 />
                 <Route
                   exact
                   path={c.PATH_CONTACT_DETAILS}
-                  render={() => (
-                    <ContactDetails
-                      onUpdateContactDetails={this.props.onUpdateContactDetails}
-                    />
-                  )}
+                  component={ContactDetails}
                 />
               </Switch>
             </section>
@@ -96,4 +75,4 @@ class ProfileEditContent extends React.Component {
   };
 }
 
-export default withRouter(ProfileEditContent);
+export default ProfileEditContent;
