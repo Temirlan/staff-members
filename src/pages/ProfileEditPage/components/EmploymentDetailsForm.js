@@ -16,11 +16,8 @@ const EmploymentDetailsForm = props => {
     onSubmit,
     staffMember: {
       statusStatement,
-      venue,
       otherVenueIds,
-      staffType,
       startsAt,
-      payRate,
       hoursPreferenceNote,
       dayPreferenceNote,
       nationalInsuranceNumber,
@@ -56,7 +53,6 @@ const EmploymentDetailsForm = props => {
               options={venues}
               valueKey="id"
               labelKey="name"
-              option={venue && venue.id}
             />
             <Field
               textLabel="Other Venues"
@@ -75,7 +71,6 @@ const EmploymentDetailsForm = props => {
               name="staffTypeId"
               component={Select}
               options={staffTypes}
-              option={staffType && staffType.id}
               valueKey="id"
               labelKey="name"
             />
@@ -94,7 +89,6 @@ const EmploymentDetailsForm = props => {
               name="payRateId"
               component={Select}
               options={payRates}
-              option={payRate && payRate.id}
               valueKey="id"
               labelKey="name"
             />
