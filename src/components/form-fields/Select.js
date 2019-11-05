@@ -14,8 +14,7 @@ const Select = props => {
     labelKey,
     meta,
     textLabel,
-    requeredSymbol,
-    statusCode
+    requeredSymbol
   } = props;
 
   const handleChange = value => {
@@ -26,9 +25,15 @@ const Select = props => {
       onChange(value);
     }
   };
+
   return (
     <div className="boss-form__field">
-      <div className="boss-form__select">
+      <div
+        className={classNames("boss-form__select", {
+          "boss-form__select_state_error":
+            meta.submitError && !meta.dirtySinceLastSubmit
+        })}
+      >
         <FieldLabelText text={textLabel} requeredSymbol={requeredSymbol} />
         <ReSelect
           name="select"
@@ -44,7 +49,7 @@ const Select = props => {
           placeholder=""
           searchable={false}
         />
-        {meta.submitError && statusCode === 422 && (
+        {meta.submitError && !meta.dirtySinceLastSubmit && (
           <FormFieldError errors={meta.submitError} />
         )}
       </div>

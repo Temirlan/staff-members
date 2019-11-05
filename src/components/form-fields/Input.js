@@ -1,21 +1,24 @@
 import React from "react";
+import classNames from "classnames";
 import FormFieldError from "./FormFieldError";
 import FieldLabelText from "./FieldLabelText";
 
 const Input = props => {
-  const { textLabel, requeredSymbol, name, meta, statusCode, input } = props;
-  console.log(props);
+  const { textLabel, requeredSymbol, name, meta, input } = props;
+
   return (
-    <div className="boss-form__field">
+    <div className="boss-form__field ">
       <FieldLabelText text={textLabel} requeredSymbol={requeredSymbol} />
       <input
         name={name}
-        className="boss-form__input"
-        {...props.input}
-        onBlur={() => input.onBlur()}
+        className={classNames("boss-form__input", {
+          "boss-form__input_state_error":
+            meta.submitError && !meta.dirtySinceLastSubmit
+        })}
+        {...input}
       />
-      {meta.submitError && statusCode === 422 && meta.touched && (
-        <FormFieldError errors={props.meta.submitError} />
+      {meta.submitError && !meta.dirtySinceLastSubmit && (
+        <FormFieldError errors={meta.submitError} />
       )}
     </div>
   );

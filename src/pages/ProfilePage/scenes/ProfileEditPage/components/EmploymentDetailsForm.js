@@ -28,8 +28,7 @@ const EmploymentDetailsForm = props => {
       staffTypeId,
       sageId,
       payRateId
-    },
-    errorStatusCode
+    }
   } = props;
 
   return (
@@ -58,7 +57,6 @@ const EmploymentDetailsForm = props => {
               valueKey="id"
               labelKey="name"
               option={venue && venue.id}
-              statusCode={errorStatusCode}
             />
             <Field
               textLabel="Other Venues"
@@ -70,7 +68,6 @@ const EmploymentDetailsForm = props => {
               clearable
               valueKey="id"
               labelKey="name"
-              statusCode={errorStatusCode}
             />
             <Field
               textLabel="Staff Type"
@@ -81,7 +78,6 @@ const EmploymentDetailsForm = props => {
               option={staffType && staffType.id}
               valueKey="id"
               labelKey="name"
-              statusCode={errorStatusCode}
             />
 
             <Field
@@ -101,7 +97,6 @@ const EmploymentDetailsForm = props => {
               option={payRate && payRate.id}
               valueKey="id"
               labelKey="name"
-              statusCode={errorStatusCode}
             />
 
             <Field
@@ -110,7 +105,6 @@ const EmploymentDetailsForm = props => {
               component={Input}
               description="Preferred days to work displayed to the rota (e.g mornings
       and weekends)"
-              statusCode={errorStatusCode}
             />
 
             <Field
@@ -119,22 +113,15 @@ const EmploymentDetailsForm = props => {
               component={Input}
               description="Preferred number of hours to work per week displayed in the
     rota (e.g 40,20+)"
-              statusCode={errorStatusCode}
             />
 
             <Field
               textLabel="National Insurance Number"
               name="nationalInsuranceNumber"
               component={Input}
-              statusCode={errorStatusCode}
             />
 
-            <Field
-              textLabel="Sage ID"
-              name="sageId"
-              component={Input}
-              statusCode={errorStatusCode}
-            />
+            <Field textLabel="Sage ID" name="sageId" component={Input} />
 
             <div className="boss-form__field">
               <ChoiceList

@@ -54,7 +54,7 @@ export const updateContactDetailsRequest = values => {
           county: !values.county ? ["This is a required field!"] : null,
           [FORM_ERROR]: ["Something went wrong"],
           message: "Error",
-          statusCode: 400
+          statusCode: 422
         });
       } else {
         resolve({ ...values, statusCode: 200 });
@@ -73,7 +73,7 @@ export const updatePersonalDetailsRequest = values => {
           gender: !values.gender ? ["This is a required field!"] : null,
           [FORM_ERROR]: ["Something went wrong"],
           message: "Error",
-          statusCode: 400
+          statusCode: 422
         });
       } else {
         resolve({ ...values, statusCode: 200 });

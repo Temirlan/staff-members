@@ -9,13 +9,18 @@ const PersonalDetailsForm = props => {
   const {
     genderValues,
     onSubmit,
-    staffMember: { firstName, surname, dateOfBirth, gender, statusCode }
+    staffMember: { firstName, surname, dateOfBirth, gender }
   } = props;
   return (
     <>
       <Form
         onSubmit={onSubmit}
-        initialValues={{ firstName, surname, dateOfBirth }}
+        initialValues={{
+          firstName,
+          surname,
+          dateOfBirth,
+          gender: gender === "male" ? 1 : 2
+        }}
         render={({ handleSubmit, submitting }) => (
           <>
             <Field
@@ -23,7 +28,6 @@ const PersonalDetailsForm = props => {
               requeredSymbol="*"
               name="firstName"
               component={Input}
-              statusCode={statusCode}
             />
 
             <Field
@@ -31,7 +35,6 @@ const PersonalDetailsForm = props => {
               requeredSymbol="*"
               name="surname"
               component={Input}
-              statusCode={statusCode}
             />
 
             <Field
@@ -39,11 +42,9 @@ const PersonalDetailsForm = props => {
               requeredSymbol="*"
               name="gender"
               component={Select}
-              option={gender === "male" ? 1 : 2}
               valueKey="id"
               labelKey="name"
               options={genderValues}
-              statusCode={statusCode}
             />
 
             <Field
@@ -51,7 +52,6 @@ const PersonalDetailsForm = props => {
               requeredSymbol="*"
               name="dateOfBirth"
               component={DateInput}
-              statusCode={statusCode}
             />
             <div className="boss-form__field boss-form__field_justify_end">
               <Button disabled={submitting} onClick={handleSubmit} type="form">

@@ -34,7 +34,6 @@ export const fetchData = () => dispatch => {
 export const updateEmploymentDeatails = values => (dispatch, getState) => {
   return updateEmploymentDeatailsRequest(values).then(values => {
     if (values.statusCode === 422) {
-      dispatch(errorEditEmploymentDetails(422));
       return values;
     }
 
@@ -45,7 +44,6 @@ export const updateEmploymentDeatails = values => (dispatch, getState) => {
           startsAt: moment(values.startsAt, "DD-MM-YYYY").format("DD-MM-YYYY")
         })
       );
-      return values;
     }
   });
 };
@@ -60,7 +58,6 @@ export const updatePersonalDetails = values => (dispatch, getState) => {
       const gender = values.gender === 1 ? "male" : "female";
 
       dispatch(editDetails({ ...values, gender }));
-      return values;
     }
   });
 };
@@ -73,7 +70,6 @@ export const updateContactDetails = values => (dispatch, getState) => {
 
     if (values.statusCode === 200) {
       dispatch(editDetails(values));
-      return values;
     }
   });
 };
