@@ -1,12 +1,12 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 
-import Select from "../../../../../components/form-fields/Select";
-import DateInput from "../../../../../components/form-fields/DateInput";
-import ChoiceList from "../../../../../components/form-fields/ChoiceList";
-import Button from "../../../../../components/Button/Button";
-import Input from "../../../../../components/form-fields/Input";
-import moment from "../../../../../../../../Library/Caches/typescript/3.6/node_modules/moment/moment";
+import Select from "../../../components/form-fields/Select";
+import DateInput from "../../../components/form-fields/DateInput";
+import ChoiceList from "../../../components/form-fields/ChoiceList";
+import Button from "../../../components/Button/Button";
+import Input from "../../../components/form-fields/Input";
+import moment from "moment";
 
 const EmploymentDetailsForm = props => {
   const {

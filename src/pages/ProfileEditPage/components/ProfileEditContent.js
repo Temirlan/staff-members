@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
-import ContentWrapper from "../../../../../components/ContentWrapper/ContentWrapper";
-import EmploymentDetails from "../scenes/EmploymentDetails";
-import PersonalDetails from "../scenes/PersonalDetails";
-import ContactDetails from "../scenes/ContactDetails";
+import ContentWrapper from "../../../components/ContentWrapper/ContentWrapper";
+import EmploymentDetails from "../pages/EmploymentDetails";
+import PersonalDetails from "../pages/PersonalDetails";
+import ContactDetails from "../pages/ContactDetails";
 
-import * as c from "../../../../../consts";
+import * as c from "../../../consts";
 
 class ProfileEditContent extends React.Component {
   constructor(props) {

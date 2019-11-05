@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import Dashboard from "../../../../../components/Dashboard/Dashboard";
+import Dashboard from "../../../components/Dashboard/Dashboard";
 
 const ProfileEditDashboard = props => {
   return (

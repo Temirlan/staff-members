@@ -1,9 +1,9 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
-import Input from "../../../../../components/form-fields/Input";
-import Select from "../../../../../components/form-fields/Select";
-import DateInput from "../../../../../components/form-fields/DateInput";
-import Button from "../../../../../components/Button/Button";
+import Input from "../../../components/form-fields/Input";
+import Select from "../../../components/form-fields/Select";
+import DateInput from "../../../components/form-fields/DateInput";
+import Button from "../../../components/Button/Button";
 
 const PersonalDetailsForm = props => {
   const {

@@ -1,8 +1,8 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 
-import Input from "../../../../../components/form-fields/Input";
-import Button from "../../../../../components/Button/Button";
+import Input from "../../../components/form-fields/Input";
+import Button from "../../../components/Button/Button";
 
 const ContactDetailsForm = props => {
   const {

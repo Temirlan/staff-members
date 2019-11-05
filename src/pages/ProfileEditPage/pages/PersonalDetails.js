@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import ContentSwitcherHeader from "../components/ContentSwitcherHeader";
 import PersonalDetailsForm from "../components/PersonalDetailsForm";
 
-import * as s from "../../../../../redux/selectors";
-import * as a from "../../../../../redux/actions";
+import * as s from "../../../redux/selectors";
+import * as a from "../../../redux/actions";
 
 const PersonalDetails = props => {
   const { staffMember, genderValues, onUpdatePersonalDetails } = props;

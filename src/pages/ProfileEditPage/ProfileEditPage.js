@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import ProfileEditDashboard from "./components/ProfileEditDashboard";
 import ProfileEditContent from "./components/ProfileEditContent";
-import * as a from "../../../../redux/actions";
+import * as a from "../../redux/actions";
 
 class ProfileEditPage extends React.Component {
   componentDidMount = () => {

@@ -9,16 +9,14 @@ import ContentWrapper from "../../components/ContentWrapper/ContentWrapper";
 import { fetchProfileById } from "../../redux/actions";
 import ProfilePageDashboard from "./components/ProfilePageDashboard";
 import { getStaffMember } from "../../redux/selectors";
-import { Accessories, Shifts, Payments, OwedHours, Holidays } from "./scenes";
+import { Accessories, Shifts, Payments, OwedHours, Holidays } from "./pages";
 
 import DetailsList from "./components/DetailsList";
 import * as c from "../../consts";
 
 class ProfilePage extends React.Component {
   componentDidMount = () => {
-    setTimeout(() => {
-      this.props.onFetchProfile(this.props.match.params.idUser);
-    }, 5000);
+    this.props.onFetchProfile(this.props.match.params.idUser);
   };
 
   render = () => {

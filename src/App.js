@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 import StaffMembersPage from "./pages/StaffMembersPage/StaffMembersPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Logo from "./components/Logo/Logo";
-import ProfileEditPage from "./pages/ProfilePage/scenes/ProfileEditPage/ProfileEditPage";
+import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
 
 import * as c from "./consts";
 

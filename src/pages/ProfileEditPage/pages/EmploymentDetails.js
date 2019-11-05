@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import ContentSwitcherHeader from "../components/ContentSwitcherHeader";
 import EmploymentDetailsForm from "../components/EmploymentDetailsForm";
 
-import * as s from "../../../../../redux/selectors";
-import * as a from "../../../../../redux/actions";
+import * as s from "../../../redux/selectors";
+import * as a from "../../../redux/actions";
 
 const EmploymentDetails = props => {
-  const { staffMember, payRates, staffTypes, venues, errorStatusCode } = props;
+  const { staffMember, payRates, staffTypes, venues } = props;
 
   return (
     <article
@@ -23,7 +23,6 @@ const EmploymentDetails = props => {
           venues={venues}
           onSubmit={props.onUpdateEmploymentDeatails}
           staffMember={staffMember}
-          errorStatusCode={errorStatusCode}
         />
       </div>
     </article>
@@ -35,8 +34,7 @@ const mapStateToProps = state => {
     staffMember: s.getStaffMember(state),
     payRates: s.payRatesSelector(state),
     venues: s.venuesSelector(state),
-    staffTypes: s.staffTypesSelector(state),
-    errorStatusCode: state.errors.employmentDetails.statusCode
+    staffTypes: s.staffTypesSelector(state)
   };
 };
 
