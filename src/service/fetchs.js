@@ -11,11 +11,13 @@ export class HttpService {
   }
 
   getStaffMembers = () => {
-    return this.instance.get("staff_members");
+    return this.instance.get("staff_members").then(response => response.data);
   };
 
   getStaffMemberById = idStaffMember => {
-    return this.instance.get(`staff_members/${idStaffMember}`);
+    return this.instance
+      .get(`staff_members/${idStaffMember}`)
+      .then(response => response.data);
   };
 }
 

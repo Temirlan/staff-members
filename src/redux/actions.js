@@ -26,8 +26,8 @@ export const errorEditEmploymentDetails = createAction(
  * 3. Move http calls and handleSubmit to separate function calls(like updateEmploymentDetailsRequest)
  */
 export const fetchData = () => dispatch => {
-  return fetchDataRequest().then(response => {
-    dispatch(initialLoad(response.data));
+  return fetchDataRequest().then(data => {
+    dispatch(initialLoad(data));
   });
 };
 
@@ -75,7 +75,7 @@ export const updateContactDetails = values => (dispatch, getState) => {
 };
 
 export const fetchProfileById = idStaffMember => dispatch => {
-  return fetchProfileByIdRequest(idStaffMember).then(response => {
-    dispatch(initialLoad(response.data));
+  return fetchProfileByIdRequest(idStaffMember).then(data => {
+    dispatch(initialLoad(data));
   });
 };

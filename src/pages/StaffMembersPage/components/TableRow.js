@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
 import { Link } from "react-router-dom";
 
 import TableTextCell from "./TableTextCell";
@@ -17,16 +16,6 @@ const TableRow = props => {
     avatarUrl
   } = props.staffMember;
 
-  const statusClass = classNames(
-    "boss-button",
-    "boss-button_type_small",
-    "boss-button_type_no-behavior",
-    {
-      "boss-button_role_enabled": status === "enabled",
-      "boss-button_role_disabled": status === "disabled"
-    }
-  );
-
   return (
     <div className="boss-table__row">
       <TableImageCell avatarUrl={avatarUrl} id={id} />
@@ -38,7 +27,7 @@ const TableRow = props => {
       </TableTextCell>
 
       <TableTextCell label="Status">
-        <Button className={statusClass}>{status}</Button>
+        <Button status={status}>{status}</Button>
       </TableTextCell>
 
       <TableTextCell label="Type">
