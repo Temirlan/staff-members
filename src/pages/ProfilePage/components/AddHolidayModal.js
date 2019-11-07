@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import Button from "../../../components/Button/Button";
+import AddHolidayForm from "./AddHolidayForm";
 
 Modal.setAppElement("#root");
 
@@ -17,7 +18,7 @@ const AddHolidayModal = props => {
       <Button type="close-add-modal-holiday" onClick={closeModal}></Button>
       <div className="boss-modal-window__header">Add Holiday</div>
       <div className="boss-modal-window__content">
-        <div className="boss-modal-window__form"></div>
+        <AddHolidayForm />
       </div>
     </Modal>
   );

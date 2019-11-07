@@ -1,0 +1,45 @@
+.DateInput {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 24px;
+    color: #757575;
+    margin: 0;
+    padding: 8px;
+    background: #fff;
+    position: relative;
+    display: inline-block;
+    width: 130px;
+    vertical-align: middle;
+}
+
+.DateInput_input {
+    position: absolute;
+    top: 0;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    color: #484848;
+    padding: 0;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.DateRangePickerInput_arrow {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.DateRangePickerInput_arrow:before {
+    content: "\2014";
+    display: inline-block;
+    font-weight: 600;
+}
+
+.DateRangePickerInput_arrow_svg {
+    display: none;
+}
+
+.DateRangePickerInput_clearDates {
+    padding: 0;
+}
