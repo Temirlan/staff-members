@@ -14,7 +14,8 @@ const Select = props => {
     labelKey,
     meta,
     textLabel,
-    requeredSymbol
+    requeredSymbol,
+    filterType
   } = props;
 
   const handleChange = value => {
@@ -27,7 +28,11 @@ const Select = props => {
   };
 
   return (
-    <div className="boss-form__field">
+    <div
+      className={classNames("boss-form__field", {
+        "boss-form__field_layout_quarter": filterType
+      })}
+    >
       <div
         className={classNames("boss-form__select", {
           "boss-form__select_state_error":

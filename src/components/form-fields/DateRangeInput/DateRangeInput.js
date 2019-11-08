@@ -3,37 +3,74 @@ import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 import moment from "moment";
 import "./DateRangeInput.css";
+import FieldLabelText from "../FieldLabelText";
 
 class DateRangeInput extends React.Component {
-  state = {
-    startDate: moment().subtract(2, "year"),
-    endDate: moment(),
-    focusedInput: null
-  };
+  constructor(props) {
+    super(props);
 
-  handleDateChange = ({ startDate, endDate }) =>
-    this.setState({ startDate, endDate });
+    const [startDate, endDate] = props.input.value.split(" - ");
+
+    this.state = {
+      startDate: moment(startDate),
+      endDate: moment(endDate),
+      focusedInput: null
+    };
+  }
+
+  handleDateChange = ({ startDate, endDate }) => {
+    const {
+      input: { onChange }
+    } = this.props;
+
+    let updStartDate = null;
+    let updEndDate = null;
+
+    if (startDate) {
+      updStartDate = moment(startDate);
+    }
+
+    if (endDate) {
+      updEndDate = moment(endDate);
+    }
+
+    this.setState({
+      startDate: updStartDate,
+      endDate: updEndDate
+    });
+
+    if (startDate && endDate) {
+      onChange(
+        `${startDate.format("YYYY-MM-DD")} - ${endDate.format("YYYY-MM-DD")}`
+      );
+    } else {
+      onChange(null);
+    }
+  };
 
   handleFocusChange = focusedInput => this.setState({ focusedInput });
 
   render() {
-    const {
-      input: { value, onChange }
-    } = this.props;
+    const { textLabel, requeredSymbol } = this.props;
 
     return (
-      <DateRangePicker
-        endDate={this.state.endDate}
-        endDateId="endDate"
-        focusedInput={this.state.focusedInput}
-        isOutsideRange={() => null}
-        onDatesChange={this.handleDateChange}
-        onFocusChange={this.handleFocusChange}
-        startDate={this.state.startDate}
-        startDateId="startDate"
-        withPortal={true}
-        showClearDates={true}
-      />
+      <div className="date-range-picker  date-range-picker_type_interval-fluid date-range-picker_type_icon">
+        {textLabel && (
+          <FieldLabelText text={textLabel} requeredSymbol={requeredSymbol} />
+        )}
+        <DateRangePicker
+          endDate={this.state.endDate}
+          endDateId="endDate"
+          startDate={this.state.startDate}
+          startDateId="startDate"
+          focusedInput={this.state.focusedInput}
+          isOutsideRange={() => null}
+          onDatesChange={this.handleDateChange}
+          onFocusChange={this.handleFocusChange}
+          withPortal={true}
+          showClearDates={true}
+        />
+      </div>
     );
   }
 }

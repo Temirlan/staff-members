@@ -1,12 +1,6 @@
 import { createAction } from "redux-actions";
 import * as types from "./types";
-import {
-  fetchDataRequest,
-  fetchProfileByIdRequest,
-  updateEmploymentDeatailsRequest,
-  updatePersonalDetailsRequest,
-  updateContactDetailsRequest
-} from "../service/fetchs";
+import * as f from "../service/fetchs";
 import moment from "moment";
 
 export const initialLoad = createAction(types.INITIAL_LOAD);
@@ -31,13 +25,13 @@ export const errorEditEmploymentDetails = createAction(
  * 3. Move http calls and handleSubmit to separate function calls(like updateEmploymentDetailsRequest)
  */
 export const fetchData = () => dispatch => {
-  return fetchDataRequest().then(data => {
+  return f.fetchDataRequest().then(data => {
     dispatch(initialLoad(data));
   });
 };
 
 export const updateEmploymentDeatails = values => (dispatch, getState) => {
-  return updateEmploymentDeatailsRequest(values).then(values => {
+  return f.updateEmploymentDeatailsRequest(values).then(values => {
     if (values.statusCode === 422) {
       return values;
     }
@@ -54,7 +48,7 @@ export const updateEmploymentDeatails = values => (dispatch, getState) => {
 };
 
 export const updatePersonalDetails = values => (dispatch, getState) => {
-  return updatePersonalDetailsRequest(values).then(values => {
+  return f.updatePersonalDetailsRequest(values).then(values => {
     if (values.statusCode === 422) {
       return values;
     }
@@ -68,7 +62,7 @@ export const updatePersonalDetails = values => (dispatch, getState) => {
 };
 
 export const updateContactDetails = values => (dispatch, getState) => {
-  return updateContactDetailsRequest(values).then(values => {
+  return f.updateContactDetailsRequest(values).then(values => {
     if (values.statusCode === 422) {
       return values;
     }
@@ -80,7 +74,13 @@ export const updateContactDetails = values => (dispatch, getState) => {
 };
 
 export const fetchProfileById = idStaffMember => dispatch => {
-  return fetchProfileByIdRequest(idStaffMember).then(data => {
+  return f.fetchProfileByIdRequest(idStaffMember).then(data => {
+    dispatch(initialLoad(data));
+  });
+};
+
+export const fetchHolidayData = () => dispatch => {
+  return f.fetchHolidayDataRequest().then(data => {
     dispatch(initialLoad(data));
   });
 };

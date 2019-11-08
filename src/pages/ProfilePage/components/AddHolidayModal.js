@@ -6,7 +6,7 @@ import AddHolidayForm from "./AddHolidayForm";
 Modal.setAppElement("#root");
 
 const AddHolidayModal = props => {
-  const { isOpen, closeModal } = props;
+  const { isOpen, closeModal, holidayTypes } = props;
 
   return (
     <Modal
@@ -18,7 +18,7 @@ const AddHolidayModal = props => {
       <Button type="close-add-modal-holiday" onClick={closeModal}></Button>
       <div className="boss-modal-window__header">Add Holiday</div>
       <div className="boss-modal-window__content">
-        <AddHolidayForm />
+        <AddHolidayForm holidayTypes={holidayTypes} />
       </div>
     </Modal>
   );

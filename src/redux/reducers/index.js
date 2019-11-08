@@ -7,6 +7,8 @@ import payRates from "./pay-rates";
 import venues from "./venues";
 import genderValues from "./gender-values";
 import holiday from "./holiday";
+import holidayTypes from "./holiday-types";
+import filterTypes from "./filter-types";
 
 export default combineReducers({
   staffMembers,
@@ -15,5 +17,7 @@ export default combineReducers({
   staffTypes,
   venues,
   genderValues,
-  holiday
+  holiday,
+  holidayTypes,
+  filterTypes
 });

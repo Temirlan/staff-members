@@ -124,3 +124,36 @@ export const updateEmploymentDeatailsRequest = values => {
     }, 1500);
   });
 };
+
+export const fetchHolidayDataRequest = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const holidayTypes = [
+        {
+          id: 1,
+          name: "Paid Holiday"
+        },
+        {
+          id: 2,
+          name: "Unpaid Holiday"
+        }
+      ];
+
+      const filterTypes = [
+        {
+          id: 1,
+          name: "Date"
+        },
+        {
+          id: 2,
+          name: "Payslip Date"
+        }
+      ];
+
+      resolve({
+        holidayTypes,
+        filterTypes
+      });
+    }, 2000);
+  });
+};

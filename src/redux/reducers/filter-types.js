@@ -7,8 +7,8 @@ const inititalState = [];
 export default handleActions(
   {
     [types.INITIAL_LOAD]: (state, action) => {
-      const staffTypes = action.payload.staffTypes || inititalState;
-      return [...staffTypes];
+      const filterTypes = action.payload.filterTypes || inititalState;
+      return [...filterTypes];
     }
   },
   inititalState
