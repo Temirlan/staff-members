@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import ReactTable from "react-table";
-import "react-table/react-table.css";
+import classnames from "classnames";
 
 import ContentWrapper from "../../../components/ContentWrapper/ContentWrapper";
 import Button from "../../../components/Button/Button";
@@ -19,175 +20,90 @@ const rows = [
   { id: 3, number: 9, label: "Unpaid days logged in current tax year" }
 ];
 
+const TableCell = props => {
+  const { label, text, creates, actions } = props;
+
+  return (
+    <div className="boss-table__info">
+      <p className="boss-table__label">{label}</p>
+      {text && <p className="boss-table__text">{text}</p>}
+      {creates && (
+        <div className="boss-table__info-group">
+          {creates.map(create => {
+            return (
+              <>
+                <p className="boss-table__text">
+                  <span className="boss-table__text-line">
+                    <span className="boss-table__text-label">
+                      {create.status}:{" "}
+                    </span>
+                    {create.name}
+                  </span>
+                  <span className="boss-table__text-meta">
+                    ({create.created})
+                  </span>
+                </p>
+              </>
+            );
+          })}
+        </div>
+      )}
+      {actions && (
+        <div className="boss-table__actions">
+          <Link
+            to="#"
+            className="boss-button boss-button_type_small boss-button_role_update boss-table__action"
+          >
+            Edit
+          </Link>
+          <Link
+            to="#"
+            className="boss-button boss-button_type_small boss-button_role_cancel boss-table__action"
+          >
+            Delete
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const columns = [
   {
-    Header: () => {
-      return (
-        <div className="boss-table__cell boss-table__cell_role_header">
-          Types
-        </div>
-      );
-    },
-
-    Cell: ({ original }) => {
-      return (
-        <div className="boss-table__cell">
-          <div className="boss-table__info">
-            <p className="boss-table__label">Types</p>
-            <p className="boss-table__text">{original.holidayType.name}</p>
-          </div>
-        </div>
-      );
-    }
+    Header: "Types",
+    Cell: ({ original }) => (
+      <TableCell label="Types" text={original.holidayType.name} />
+    )
   },
   {
-    Header: () => {
-      return (
-        <div className="boss-table__cell boss-table__cell_role_header">
-          Status
-        </div>
-      );
-    },
-
-    Cell: ({ original }) => {
-      return (
-        <div className="boss-table__info">
-          <p className="boss-table__label">Status</p>
-          <p className="boss-table__text boss-table__text_role_pending-status">
-            {original.status}
-          </p>
-        </div>
-      );
-    }
+    Header: "Status",
+    // boss-table__text_role_pending-status
+    Cell: ({ original }) => <TableCell label="Status" text={original.status} />
   },
   {
-    Header: () => {
-      return (
-        <div className="boss-table__cell boss-table__cell_role_header">
-          Dates
-        </div>
-      );
-    },
-
-    Cell: ({ original }) => {
-      return (
-        <div className="boss-table__info">
-          <p className="boss-table__label">Dates</p>
-          <p className="boss-table__text boss-table__text_role_pending-status">
-            {original.date}
-          </p>
-        </div>
-      );
-    }
+    Header: "Dates",
+    Cell: ({ original }) => <TableCell label="Dates" text={original.date} />
   },
   {
-    Header: () => {
-      return (
-        <div className="boss-table__cell boss-table__cell_role_header">
-          Note
-        </div>
-      );
-    },
-
-    Cell: ({ original }) => {
-      return (
-        <div className="boss-table__info">
-          <p className="boss-table__label">Dates</p>
-          <p className="boss-table__text boss-table__text_role_pending-status">
-            {original.note}
-          </p>
-        </div>
-      );
-    }
+    Header: "Note",
+    Cell: ({ original }) => <TableCell label="Note" text={original.note} />
   },
   {
-    Header: () => {
-      return (
-        <div className="boss-table__cell boss-table__cell_role_header">
-          Created
-        </div>
-      );
-    },
-
-    Cell: ({ original }) => {
-      return (
-        <div className="boss-table__cell">
-          <div className="boss-table__info">
-            <p className="boss-table__label">Created</p>
-            <div className="boss-table__info-group">
-              {original.creates.map(create => {
-                return (
-                  <>
-                    <p className="boss-table__text">
-                      <span className="boss-table__text-line">
-                        <span className="boss-table__text-label">
-                          {create.status}:{" "}
-                        </span>
-                        {create.name}
-                      </span>
-                      <span className="boss-table__text-meta">
-                        ({create.created})
-                      </span>
-                    </p>
-                  </>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      );
-    }
+    Header: "Created",
+    Cell: ({ original }) => (
+      <TableCell label="Created" creates={original.creates} />
+    )
   },
   {
-    Header: () => {
-      return (
-        <div className="boss-table__cell boss-table__cell_role_header">
-          Payslip Date
-        </div>
-      );
-    },
-
-    Cell: ({ original }) => {
-      return (
-        <div className="boss-table__info">
-          <p className="boss-table__label">Dates</p>
-          <p className="boss-table__text boss-table__text_role_pending-status">
-            {original.payslipDate}
-          </p>
-        </div>
-      );
-    }
+    Header: "Payslip Date",
+    Cell: ({ original }) => (
+      <TableCell label="Created" text={original.payslipDate} />
+    )
   },
   {
-    Header: () => {
-      return (
-        <div className="boss-table__cell boss-table__cell_role_header"></div>
-      );
-    },
-
-    Cell: ({ original }) => {
-      return (
-        <div className="boss-table__cell">
-          <div className="boss-table__info">
-            <p className="boss-table__label">Action</p>
-            <div className="boss-table__actions">
-              <a
-                href="#"
-                className="boss-button boss-button_type_small boss-button_role_update boss-table__action"
-              >
-                Edit
-              </a>
-              <a
-                href="#"
-                className="boss-button boss-button_type_small boss-button_role_cancel boss-table__action"
-              >
-                Delete
-              </a>
-            </div>
-          </div>
-        </div>
-      );
-    }
+    Header: "",
+    Cell: ({ original }) =>
+      original.frozen ? <></> : <TableCell label="Action" actions />
   }
 ];
 
@@ -236,15 +152,38 @@ class Holidays extends React.Component {
                 data={this.props.holidays}
                 columns={columns}
                 minRows={this.props.holidays.length}
+                className="boss-board__manager-table"
+                getTheadProps={() => ({
+                  style: {
+                    borderBottom: "1px solid #eee"
+                  }
+                })}
+                getTrGroupProps={() => ({
+                  style: {
+                    borderBottom: "1px solid #eee"
+                  }
+                })}
+                getTheadTrProps={() => ({
+                  className: "boss-table__row"
+                })}
+                getTrProps={(state, rowInfo, column, instance) => ({
+                  className: classnames("boss-table__row", {
+                    "boss-table__row boss-table__row_state_frozen":
+                      rowInfo.original.frozen
+                  })
+                })}
+                getTdProps={() => ({
+                  className: "boss-table__cell"
+                })}
+                getTheadThProps={() => ({
+                  className: "boss-table__cell boss-table__cell_role_header"
+                })}
+                getTableProps={() => ({
+                  className: "boss-table boss-table_page_smp-holiday-requests"
+                })}
               >
                 {(state, makeTable, instance) => {
-                  return (
-                    <div className="boss-board__manager-table">
-                      <div className="boss-table boss-table_page_smp-holiday-requests">
-                        {makeTable()}
-                      </div>
-                    </div>
-                  );
+                  return <>{makeTable()}</>;
                 }}
               </ReactTable>
             </div>

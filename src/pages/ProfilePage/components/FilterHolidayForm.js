@@ -14,11 +14,11 @@ const FilterHolidayForm = props => {
           rangeDate: "2016-11-14 - 2016-11-20",
           filterTypeId: 1
         }}
-        className="boss-form"
         render={({ handleSubmit, submitting }) => (
-          <>
+          <div className="boss-form">
             <div className="boss-form__group boss-form__group_position_last">
               <h3 className="boss-form__group-title">Filter</h3>
+              {/* boss-form__row boss-form__row_mobile boss-form__row_position_last */}
               <div className="boss-form__row boss-form__row_align_center boss-form__row_desktop boss-form__row_position_last">
                 <Field
                   textLabel="Type"
@@ -47,7 +47,7 @@ const FilterHolidayForm = props => {
                 </div>
               </div>
             </div>
-          </>
+          </div>
         )}
       />
     </div>
