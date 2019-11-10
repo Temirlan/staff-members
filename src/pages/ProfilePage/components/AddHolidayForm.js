@@ -23,6 +23,7 @@ const AddHolidayForm = props => {
                   textLabel="Date"
                   name="rangeDate"
                   component={DateRangeInput}
+                  displayFormat="MM/DD/YYYY"
                 />
               </div>
               <div className="boss-form__field boss-form__field_layout_third">

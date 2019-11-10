@@ -30,7 +30,11 @@ const FilterHolidayForm = props => {
                   filterType
                 />
                 <div className="boss-form__field boss-form__field_layout_max boss-form__field_no-label">
-                  <Field name="rangeDate" component={DateRangeInput} />
+                  <Field
+                    name="rangeDate"
+                    component={DateRangeInput}
+                    displayFormat="DD/MM/YYYY"
+                  />
                 </div>
                 <div className="boss-form__field boss-form__field_layout_min boss-form__field_no-label">
                   <Button

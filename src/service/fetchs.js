@@ -149,10 +149,105 @@ export const fetchHolidayDataRequest = () => {
           name: "Payslip Date"
         }
       ];
+      const holidays = [
+        {
+          holidayTypeId: 2,
+          status: "PENDING",
+          date: "2016-11-15 - 2016-11-16",
+          note: null,
+          creates: [
+            {
+              id: 1,
+              status: "Requested",
+              name: "John Doe",
+              created: "09:30 Mon 14/11/2016"
+            }
+          ],
+          payslipDate: "2016-11-20",
+          frozen: false
+        },
+        {
+          holidayTypeId: 1,
+          status: null,
+          date: "2016-11-17 - 2016-11-18",
+          note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          creates: [
+            {
+              id: 1,
+              status: null,
+              name: "Trulla Collier",
+              created: "09:30 Mon 14/11/2016"
+            }
+          ],
+          payslipDate: "2016-11-20",
+          frozen: false
+        },
+        {
+          holidayTypeId: 1,
+          status: null,
+          date: "2016-11-17 - 2016-11-18",
+          note: null,
+          creates: [
+            {
+              id: 1,
+              status: null,
+              name: "Trulla Collier",
+              created: "09:30 Mon 14/11/2016"
+            }
+          ],
+          payslipDate: "2016-11-20",
+          frozen: true
+        },
+        {
+          holidayTypeId: 2,
+          status: "ACCEPTED",
+          date: "2016-11-15 - 2016-11-16",
+          note: null,
+          creates: [
+            {
+              id: 1,
+              status: "Requested",
+              name: "John Doe",
+              created: "09:30 Mon 14/11/2016"
+            },
+            {
+              id: 2,
+              status: "Accepted",
+              name: "Trulla Collier",
+              created: "10:30 Mon 14/11/2016"
+            }
+          ],
+          payslipDate: "2016-11-20",
+          frozen: false
+        },
+        {
+          holidayTypeId: 2,
+          status: "REJECTED",
+          date: "2016-11-15 - 2016-11-16",
+          note: "Lorem ipsum dolor sit amet",
+          creates: [
+            {
+              id: 1,
+              status: "Requested",
+              name: "John Doe",
+              created: "09:30 Mon 14/11/2016"
+            },
+            {
+              id: 2,
+              status: "Rejected",
+              name: "Trulla Collier",
+              created: "10:30 Mon 14/11/2016"
+            }
+          ],
+          payslipDate: "2016-11-20",
+          frozen: true
+        }
+      ];
 
       resolve({
         holidayTypes,
-        filterTypes
+        filterTypes,
+        holidays
       });
     }, 2000);
   });

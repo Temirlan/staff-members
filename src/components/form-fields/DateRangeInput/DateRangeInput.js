@@ -51,7 +51,7 @@ class DateRangeInput extends React.Component {
   handleFocusChange = focusedInput => this.setState({ focusedInput });
 
   render() {
-    const { textLabel, requeredSymbol } = this.props;
+    const { textLabel, requeredSymbol, displayFormat } = this.props;
 
     return (
       <div className="date-range-picker  date-range-picker_type_interval-fluid date-range-picker_type_icon">
@@ -69,6 +69,7 @@ class DateRangeInput extends React.Component {
           onFocusChange={this.handleFocusChange}
           withPortal={true}
           showClearDates={true}
+          displayFormat={displayFormat}
         />
       </div>
     );

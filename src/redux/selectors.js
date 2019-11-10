@@ -7,6 +7,38 @@ export const venuesSelector = state => state.venues;
 export const genderValuesSelector = state => state.genderValues;
 export const staffMemberSelector = state => state.staffMember;
 export const payRatesSelector = state => state.payRates;
+export const holidayTypesSelector = state => state.holidayTypes;
+export const holidaysSelector = state => state.holiday.holidays;
+
+const formatDateServer = "YYYY-MM-DD";
+const formatDateUI = "ddd DD/MM/YYYY";
+const formatPayslipDateUI = "DD/MM/YYYY";
+
+export const getHolidays = createSelector(
+  [holidayTypesSelector, holidaysSelector],
+  (holidayTypes, holidays) => {
+    return holidays.map(holiday => {
+      let [startDate, endDate] = holiday.date.split(" - ");
+
+      const date = `${moment(startDate, formatDateServer).format(
+        formatDateUI
+      )} - ${moment(endDate, formatDateServer).format(formatDateUI)}`;
+
+      const payslipDate = moment(startDate, formatDateServer).format(
+        formatPayslipDateUI
+      );
+
+      return {
+        ...holiday,
+        date,
+        payslipDate,
+        holidayType: holidayTypes.find(
+          holidayType => holidayType.id === holiday.holidayTypeId
+        )
+      };
+    });
+  }
+);
 
 export const getGenderValues = createSelector(
   [genderValuesSelector],
