@@ -10,6 +10,7 @@ export const setOptionStaffType = createAction(types.SET_OPTION_STAFF_TYPES);
 export const setOptionPayRate = createAction(types.SET_OPTION_PAY_RATES);
 export const getOptions = createAction(types.GET_OPTION);
 export const editDetails = createAction(types.EDIT_STAFF_MEMBER_DETAILS);
+export const filterHolidaysByDate = createAction(types.FILTER_HOLIDAY_BY_DATE);
 
 export const toggleAddHolidayModal = createAction(
   types.TOGGLE_ADD_HOLIDAY_MODAL

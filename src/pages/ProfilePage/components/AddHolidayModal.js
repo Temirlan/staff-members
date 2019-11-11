@@ -15,7 +15,11 @@ const AddHolidayModal = props => {
       className="boss-modal-window boss-modal-window_role_edit"
       contentLabel="Add holiday modal"
     >
-      <Button type="close-add-modal-holiday" onClick={closeModal}></Button>
+      <Button
+        closeModal
+        type="close-add-modal-holiday"
+        onClick={closeModal}
+      ></Button>
       <div className="boss-modal-window__header">Add Holiday</div>
       <div className="boss-modal-window__content">
         <AddHolidayForm holidayTypes={holidayTypes} />

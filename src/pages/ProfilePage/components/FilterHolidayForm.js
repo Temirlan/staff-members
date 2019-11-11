@@ -9,7 +9,7 @@ const FilterHolidayForm = props => {
   return (
     <div className="boss-board__manager-filter">
       <Form
-        onSubmit={values => console.log(values)}
+        onSubmit={props.onFilterHolidaysByDate}
         initialValues={{
           rangeDate: "2016-11-14 - 2016-11-20",
           filterTypeId: 1

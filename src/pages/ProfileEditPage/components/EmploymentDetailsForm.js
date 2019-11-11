@@ -123,7 +123,7 @@ const EmploymentDetailsForm = props => {
             />
           </div>
           <div className="boss-form__field boss-form__field_justify_end">
-            <Button disabled={submitting} type="form" onClick={handleSubmit}>
+            <Button disabled={submitting} formDetails onClick={handleSubmit}>
               Save
             </Button>
           </div>

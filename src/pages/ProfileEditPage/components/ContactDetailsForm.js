@@ -35,7 +35,7 @@ const ContactDetailsForm = props => {
           <Field textLabel="County" name="county" component={Input} />
 
           <div className="boss-form__field boss-form__field_justify_end">
-            <Button disabled={submitting} onClick={handleSubmit} type="form">
+            <Button formDetails disabled={submitting} onClick={handleSubmit}>
               Save
             </Button>
           </div>

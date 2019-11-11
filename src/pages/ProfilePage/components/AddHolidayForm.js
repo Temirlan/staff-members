@@ -40,11 +40,7 @@ const AddHolidayForm = props => {
             <Field textLabel="Note" name="note" component={Textarea} />
 
             <div className="boss-form__field">
-              <Button
-                disabled={submitting}
-                onClick={handleSubmit}
-                type="add-holiday"
-              >
+              <Button disabled={submitting} onClick={handleSubmit} addHoliday>
                 Add Holiday
               </Button>
             </div>
