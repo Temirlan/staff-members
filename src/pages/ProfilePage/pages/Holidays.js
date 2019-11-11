@@ -93,7 +93,8 @@ class Holidays extends React.Component {
       isOpenAddHolidayModal,
       holidayTypes,
       filterTypes,
-      onFilterHolidaysByDate
+      onFilterHolidaysByDate,
+      onFilterParamsDate
     } = this.props;
 
     return (
@@ -120,6 +121,7 @@ class Holidays extends React.Component {
               <FilterHolidayForm
                 filterTypes={filterTypes}
                 onFilterHolidaysByDate={onFilterHolidaysByDate}
+                onFilterParamsDate={onFilterParamsDate}
               />
               <ReactTable
                 showPageSizeOptions={false}
@@ -184,6 +186,9 @@ const mapDispatchToProps = dispatch => {
     },
     onFilterHolidaysByDate: values => {
       dispatch(a.filterHolidaysByDate(values));
+    },
+    onFilterParamsDate: values => {
+      dispatch(a.filterParamsDate(values));
     }
   };
 };

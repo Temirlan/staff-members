@@ -1,12 +1,13 @@
 import { handleActions } from "redux-actions";
 
 import * as types from "../types";
-import moment from "moment";
 
 const inititalState = {
   isOpenAddHolidayModal: false,
   holidays: [],
-  holidaysCopy: []
+  holidaysCopy: [],
+  filterStartDate: null,
+  filterEndDate: null
 };
 
 export default handleActions(
@@ -25,20 +26,23 @@ export default handleActions(
         isOpenAddHolidayModal: !state.isOpenAddHolidayModal
       };
     },
-    [types.FILTER_HOLIDAY_BY_DATE]: (state, action) => {
-      const [filterStartDate, filterEndDate] = action.payload.rangeDate.split(
-        " - "
-      );
+    [types.FILTER_PARAMS_DATE]: (state, action) => {
+      if (action.payload.rangeDate) {
+        const [filterStartDate, filterEndDate] = action.payload.rangeDate.split(
+          " - "
+        );
+
+        return {
+          ...state,
+          filterStartDate,
+          filterEndDate
+        };
+      }
+
       return {
         ...state,
-        holidays: state.holidaysCopy.filter(holiday => {
-          const [startDate, endDate] = holiday.date.split(" - ");
-
-          return (
-            moment(filterStartDate).diff(moment(startDate)) <= 0 &&
-            moment(endDate).diff(moment(filterEndDate)) <= 0
-          );
-        })
+        filterStartDate: null,
+        filterEndDate: null
       };
     }
   },

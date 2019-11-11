@@ -9,34 +9,58 @@ export const staffMemberSelector = state => state.staffMember;
 export const payRatesSelector = state => state.payRates;
 export const holidayTypesSelector = state => state.holidayTypes;
 export const holidaysSelector = state => state.holiday.holidays;
+export const holidaySelector = state => state.holiday;
 
-const formatDateServer = "YYYY-MM-DD";
 const formatDateUI = "ddd DD/MM/YYYY";
 const formatPayslipDateUI = "DD/MM/YYYY";
+const formatCreatedDateUI = "HH:mm ddd DD/MM/YYYY";
 
 export const getHolidays = createSelector(
-  [holidayTypesSelector, holidaysSelector],
-  (holidayTypes, holidays) => {
-    return holidays.map(holiday => {
-      let [startDate, endDate] = holiday.date.split(" - ");
+  [holidaySelector, holidayTypesSelector, holidaysSelector],
+  (holiday, holidayTypes, holidays) => {
+    const holidayEntity = (holiday, holidayTypes) => {
+      const { startDate, endDate, payslipDate } = holiday;
 
-      const date = `${moment(startDate, formatDateServer).format(
-        formatDateUI
-      )} - ${moment(endDate, formatDateServer).format(formatDateUI)}`;
+      const date = `${moment(startDate).format(formatDateUI)} - ${moment(
+        endDate
+      ).format(formatDateUI)}`;
 
-      const payslipDate = moment(startDate, formatDateServer).format(
-        formatPayslipDateUI
-      );
+      const mPayslipDate = moment(payslipDate).format(formatPayslipDateUI);
+
+      const creates = holiday.creates.map(create => {
+        return {
+          ...create,
+          created: moment(create.created).format(formatCreatedDateUI)
+        };
+      });
 
       return {
         ...holiday,
         date,
-        payslipDate,
+        payslipDate: mPayslipDate,
         holidayType: holidayTypes.find(
           holidayType => holidayType.id === holiday.holidayTypeId
-        )
+        ),
+        creates
       };
-    });
+    };
+
+    if (holiday.filterStartDate && holiday.filterEndDate) {
+      const filterHolidays = holidays.filter(h => {
+        const { startDate, endDate } = h;
+
+        return (
+          moment(holiday.filterStartDate).diff(moment(startDate)) <= 0 &&
+          moment(endDate).diff(moment(holiday.filterEndDate)) <= 0
+        );
+      });
+
+      return filterHolidays.map(holiday =>
+        holidayEntity(holiday, holidayTypes)
+      );
+    }
+
+    return holidays.map(holiday => holidayEntity(holiday, holidayTypes));
   }
 );
 
