@@ -24,36 +24,57 @@ const rows = [
 const columns = [
   {
     Header: "Types",
+    width: "auto",
+    className: "boss-table__cell",
+    headerClassName: "boss-table__cell boss-table__cell_role_header",
     Cell: ({ original }) => (
       <TableCell label="Types" text={original.holidayType.name} />
     )
   },
   {
     Header: "Status",
+    width: "auto",
+    className: "boss-table__cell",
+    headerClassName: "boss-table__cell boss-table__cell_role_header",
     Cell: ({ original }) => <TableCell label="Status" text={original.status} />
   },
   {
     Header: "Dates",
+    width: "auto",
+    className: "boss-table__cell",
+    headerClassName: "boss-table__cell boss-table__cell_role_header",
     Cell: ({ original }) => <TableCell label="Dates" text={original.date} />
   },
   {
     Header: "Note",
+    width: "auto",
+    className: "boss-table__cell",
+    headerClassName: "boss-table__cell boss-table__cell_role_header",
     Cell: ({ original }) => <TableCell label="Note" text={original.note} />
   },
   {
     Header: "Created",
+    width: "auto",
+    className: "boss-table__cell",
+    headerClassName: "boss-table__cell boss-table__cell_role_header",
     Cell: ({ original }) => (
       <TableCell label="Created" creates={original.creates} />
     )
   },
   {
     Header: "Payslip Date",
+    width: "auto",
+    className: "boss-table__cell",
+    headerClassName: "boss-table__cell boss-table__cell_role_header",
     Cell: ({ original }) => (
       <TableCell label="Created" text={original.payslipDate} />
     )
   },
   {
     Header: "",
+    width: "auto",
+    className: "boss-table__cell",
+    headerClassName: "boss-table__cell boss-table__cell_role_header",
     Cell: ({ original }) =>
       original.frozen ? <></> : <TableCell label="Action" actions />
   }
@@ -122,17 +143,11 @@ class Holidays extends React.Component {
                 getTheadTrProps={() => ({
                   className: "boss-table__row"
                 })}
-                getTheadThProps={() => ({
-                  className: "boss-table__cell boss-table__cell_role_header"
-                })}
                 getTrProps={(state, rowInfo, column, instance) => ({
                   className: classnames("boss-table__row", {
                     "boss-table__row boss-table__row_state_frozen":
                       rowInfo.original.frozen
                   })
-                })}
-                getTdProps={() => ({
-                  className: "boss-table__cell"
                 })}
                 getTableProps={() => ({
                   className: "boss-table boss-table_page_smp-holiday-requests"
