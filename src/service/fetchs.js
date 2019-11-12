@@ -161,7 +161,7 @@ export const fetchHolidayDataRequest = () => {
               id: 1,
               status: "Requested",
               name: "John Doe",
-              created: "2016-11-14T09:30:42"
+              created: "2016-11-14T04:30:42+01:00"
             }
           ],
           payslipDate: "2016-11-20",
@@ -178,7 +178,7 @@ export const fetchHolidayDataRequest = () => {
               id: 1,
               status: null,
               name: "Trulla Collier",
-              created: "2016-11-14T09:30:42"
+              created: "2016-11-14T04:30:42+01:00"
             }
           ],
           payslipDate: "2016-11-20",
@@ -195,7 +195,7 @@ export const fetchHolidayDataRequest = () => {
               id: 1,
               status: null,
               name: "Trulla Collier",
-              created: "2016-11-14T09:30:42"
+              created: "2016-11-14T04:30:42+01:00"
             }
           ],
           payslipDate: "2016-11-20",
@@ -212,13 +212,13 @@ export const fetchHolidayDataRequest = () => {
               id: 1,
               status: "Requested",
               name: "John Doe",
-              created: "2016-11-14T09:30:42"
+              created: "2016-11-14T04:30:42+01:00"
             },
             {
               id: 2,
               status: "Accepted",
               name: "Trulla Collier",
-              created: "2016-11-14T10:30:42"
+              created: "2016-11-14T05:30:42+01:00"
             }
           ],
           payslipDate: "2016-11-20",
@@ -235,13 +235,13 @@ export const fetchHolidayDataRequest = () => {
               id: 1,
               status: "Requested",
               name: "John Doe",
-              created: "2016-11-14T09:30:42"
+              created: "2016-11-14T04:30:42+01:00"
             },
             {
               id: 2,
               status: "Rejected",
               name: "Trulla Collier",
-              created: "2016-11-14T10:30:42"
+              created: "2016-11-14T05:30:42+01:00"
             }
           ],
           payslipDate: "2016-11-20",

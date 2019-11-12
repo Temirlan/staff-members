@@ -11,7 +11,7 @@ const FilterHolidayForm = props => {
       <Form
         onSubmit={props.onFilterParamsDate}
         initialValues={{
-          rangeDate: "2016-11-14 - 2016-11-20",
+          rangeDate: { startDate: "2016-11-14", endDate: "2016-11-20" },
           filterTypeId: 1
         }}
         render={({ handleSubmit, submitting }) => (

@@ -9,7 +9,7 @@ class DateRangeInput extends React.Component {
   constructor(props) {
     super(props);
 
-    const [startDate, endDate] = props.input.value.split(" - ");
+    const { startDate, endDate } = props.input.value;
 
     this.state = {
       startDate: moment(startDate),
@@ -39,13 +39,10 @@ class DateRangeInput extends React.Component {
       endDate: updEndDate
     });
 
-    if (startDate && endDate) {
-      onChange(
-        `${startDate.format("YYYY-MM-DD")} - ${endDate.format("YYYY-MM-DD")}`
-      );
-    } else {
-      onChange(null);
-    }
+    onChange({
+      startDate: updStartDate && updStartDate.format("YYYY-MM-DD"),
+      endDate: updEndDate && updEndDate.format("YYYY-MM-DD")
+    });
   };
 
   handleFocusChange = focusedInput => this.setState({ focusedInput });

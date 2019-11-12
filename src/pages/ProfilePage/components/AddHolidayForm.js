@@ -12,7 +12,7 @@ const AddHolidayForm = props => {
       <Form
         onSubmit={values => console.log(values)}
         initialValues={{
-          rangeDate: "2017-10-16 - 2017-10-26"
+          rangeDate: { startDate: "2017-10-16", endDate: "2017-10-26" }
         }}
         className="boss-form"
         render={({ handleSubmit, submitting }) => (

@@ -15,52 +15,66 @@ const formatDateUI = "ddd DD/MM/YYYY";
 const formatPayslipDateUI = "DD/MM/YYYY";
 const formatCreatedDateUI = "HH:mm ddd DD/MM/YYYY";
 
+const makeHolidayEntity = (holiday, holidayTypes) => {
+  const { startDate, endDate, payslipDate } = holiday;
+
+  const date = `${moment(startDate).format(formatDateUI)} - ${moment(
+    endDate
+  ).format(formatDateUI)}`;
+
+  const mPayslipDate = moment(payslipDate).format(formatPayslipDateUI);
+
+  const creates = holiday.creates.map(create => {
+    return {
+      ...create,
+      created: moment(create.created).format(formatCreatedDateUI)
+    };
+  });
+
+  return {
+    ...holiday,
+    date,
+    payslipDate: mPayslipDate,
+    holidayType: holidayTypes.find(
+      holidayType => holidayType.id === holiday.holidayTypeId
+    ),
+    creates
+  };
+};
+
+const filteredByDates = (holidays, { filterStartDate, filterEndDate }) => {
+  if (filterStartDate && filterEndDate) {
+    return holidays.filter(h => {
+      const { startDate, endDate } = h;
+      return (
+        moment(filterStartDate).diff(moment(startDate)) <= 0 &&
+        moment(endDate).diff(moment(filterEndDate)) <= 0
+      );
+    });
+  } else {
+    if (filterStartDate) {
+      return holidays.filter(h => {
+        return moment(filterStartDate).diff(moment(h.startDate)) <= 0;
+      });
+    }
+
+    if (filterEndDate) {
+      return holidays.filter(h => {
+        return moment(filterEndDate).diff(moment(h.endDate)) <= 0;
+      });
+    }
+  }
+  return [...holidays];
+};
+
 export const getHolidays = createSelector(
   [holidaySelector, holidayTypesSelector, holidaysSelector],
   (holiday, holidayTypes, holidays) => {
-    const holidayEntity = (holiday, holidayTypes) => {
-      const { startDate, endDate, payslipDate } = holiday;
+    let copyHolidays = filteredByDates(holidays, holiday);
 
-      const date = `${moment(startDate).format(formatDateUI)} - ${moment(
-        endDate
-      ).format(formatDateUI)}`;
-
-      const mPayslipDate = moment(payslipDate).format(formatPayslipDateUI);
-
-      const creates = holiday.creates.map(create => {
-        return {
-          ...create,
-          created: moment(create.created).format(formatCreatedDateUI)
-        };
-      });
-
-      return {
-        ...holiday,
-        date,
-        payslipDate: mPayslipDate,
-        holidayType: holidayTypes.find(
-          holidayType => holidayType.id === holiday.holidayTypeId
-        ),
-        creates
-      };
-    };
-
-    if (holiday.filterStartDate && holiday.filterEndDate) {
-      const filterHolidays = holidays.filter(h => {
-        const { startDate, endDate } = h;
-
-        return (
-          moment(holiday.filterStartDate).diff(moment(startDate)) <= 0 &&
-          moment(endDate).diff(moment(holiday.filterEndDate)) <= 0
-        );
-      });
-
-      return filterHolidays.map(holiday =>
-        holidayEntity(holiday, holidayTypes)
-      );
-    }
-
-    return holidays.map(holiday => holidayEntity(holiday, holidayTypes));
+    return copyHolidays.map(holiday =>
+      makeHolidayEntity(holiday, holidayTypes)
+    );
   }
 );
 

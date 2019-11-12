@@ -28,14 +28,12 @@ export default handleActions(
     },
     [types.FILTER_PARAMS_DATE]: (state, action) => {
       if (action.payload.rangeDate) {
-        const [filterStartDate, filterEndDate] = action.payload.rangeDate.split(
-          " - "
-        );
+        const { startDate, endDate } = action.payload.rangeDate;
 
         return {
           ...state,
-          filterStartDate,
-          filterEndDate
+          filterStartDate: startDate,
+          filterEndDate: endDate
         };
       }
 
